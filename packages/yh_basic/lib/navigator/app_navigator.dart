@@ -1,0 +1,3 @@
+class AppNavigator {
+  AppNavigator._();
+}

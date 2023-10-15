@@ -16,3 +16,9 @@ class AppGlobal {
 
   factory AppGlobal.I({Site? siteParam}) => _instance ??= AppGlobal._internal(siteParam);
 }
+
+abstract class JsonCodec<T> {
+  Map<String, dynamic> toJson(T obj);
+
+  T fromJson(Map<String, dynamic> json);
+}

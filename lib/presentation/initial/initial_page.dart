@@ -1,3 +1,5 @@
+import 'package:fijob/commons/constants/asset/image_resource.dart';
+import 'package:fijob/commons/constants/color_constant.dart';
 import 'package:flutter/material.dart';
 
 class InitialPage extends StatelessWidget {
@@ -5,6 +7,16 @@ class InitialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      backgroundColor: ColorConstants.primary,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [Image.asset(ImageResource.imgSplash, width: 100)],
+          ),
+        ),
+      ),
+    );
   }
 }

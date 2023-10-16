@@ -1,0 +1,85 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "fijob",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "fijob (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "fijob (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "push_notification",
+            "cwd": "packages/push_notification",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "push_notification (profile mode)",
+            "cwd": "packages/push_notification",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "push_notification (release mode)",
+            "cwd": "packages/push_notification",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "yh_basic",
+            "cwd": "packages/yh_basic",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "yh_basic (profile mode)",
+            "cwd": "packages/yh_basic",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "yh_basic (release mode)",
+            "cwd": "packages/yh_basic",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "yh_ui",
+            "cwd": "packages/yh_ui",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "yh_ui (profile mode)",
+            "cwd": "packages/yh_ui",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "yh_ui (release mode)",
+            "cwd": "packages/yh_ui",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

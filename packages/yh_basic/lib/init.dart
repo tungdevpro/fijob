@@ -1,8 +1,13 @@
 import 'dart:io';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/application.dart';
+import 'package:yh_basic/core/app/app_cubit.dart';
+import 'package:yh_basic/core/app/app_info.dart';
 import 'package:yh_basic/types.dart';
 import 'package:yh_basic/yh_basic.dart';
+// ignore: depend_on_referenced_packages
+import 'package:provider/single_child_widget.dart';
 
 void init({
   required Site site,
@@ -16,6 +21,7 @@ void init({
   LoginOption loginOption = LoginOption.none,
   bool useCaching = false,
   required RouterConfig<Object> routerConfig,
+  required List<SingleChildWidget> providers,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
@@ -34,11 +40,19 @@ void init({
     });
   }
 
-  runApp(Application(
-    routerConfig: routerConfig,
-    startLocale: startLocale,
-    supportedLocales: List<Locale>.from(supportedLocales),
-  ));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => AppCubit()..init()),
+        ...providers,
+      ],
+      child: Application(
+        routerConfig: routerConfig,
+        startLocale: startLocale,
+        supportedLocales: List<Locale>.from(supportedLocales),
+      ),
+    ),
+  );
 }
 
 class MyHttpOverrides extends HttpOverrides {

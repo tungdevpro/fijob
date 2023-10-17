@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yh_basic/core/app/app_cubit.dart';
+import 'package:yh_basic/core/app/app_info.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 import 'types.dart';
@@ -42,15 +45,19 @@ class _ApplicationState extends State<Application> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: AppGlobal.I().site.title,
-      debugShowCheckedModeBanner: false,
-      routerConfig: widget.routerConfig,
-      darkTheme: widget.darkTheme,
-      themeMode: widget.themeMode,
-      theme: widget.theme,
-      locale: widget.startLocale,
-      supportedLocales: widget.supportedLocales ?? <Locale>[],
+    return BlocBuilder<AppCubit, AppInfo>(
+      builder: (context, state) {
+        return MaterialApp.router(
+          title: AppGlobal.I().site.title,
+          debugShowCheckedModeBanner: false,
+          routerConfig: widget.routerConfig,
+          darkTheme: widget.darkTheme,
+          themeMode: widget.themeMode,
+          theme: widget.theme,
+          locale: widget.startLocale,
+          supportedLocales: widget.supportedLocales ?? <Locale>[],
+        );
+      },
     );
   }
 }

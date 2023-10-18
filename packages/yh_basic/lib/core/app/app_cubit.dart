@@ -5,8 +5,15 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 // ignore: must_be_immutable
 class AppCubit extends Cubit<AppInfo> implements LibraryInitializer {
-  AppCubit() : super(AppInfo(status: AppStatus.none, connectivityStream: Connectivity().onConnectivityChanged));
+  final Stream<ConnectivityResult> connectivityStream;
+  AppCubit({required this.connectivityStream}) : super(AppInfo(status: AppStatus.none, connectivityStream: connectivityStream));
 
   @override
-  Future<void> init() async {}
+  Future<void> init() async {
+    // emit(state.copyWith(skipGettingStarted: true, connectivityStream: Connectivity().onConnectivityChanged));
+  }
+
+  void handleSkipGettingStarted() {
+    emit(state.copyWith(skipGettingStarted: true, connectivityStream: connectivityStream));
+  }
 }

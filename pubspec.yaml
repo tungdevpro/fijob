@@ -48,6 +48,8 @@ dependencies:
 
   yh_basic:
     path: packages/yh_basic
+  yh_ui:
+    path: packages/yh_ui
 
 dev_dependencies:
   flutter_test:

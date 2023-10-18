@@ -10,7 +10,7 @@ class AppInfo extends Equatable {
 
   const AppInfo({this.status, this.skipGettingStarted = false, this.connectivityStream});
 
-  AppInfo copyWith(AppStatus? status, bool? skipGettingStarted, Stream<ConnectivityResult>? connectivityStream) {
+  AppInfo copyWith({AppStatus? status, bool? skipGettingStarted, Stream<ConnectivityResult>? connectivityStream}) {
     return AppInfo(status: status ?? this.status, skipGettingStarted: skipGettingStarted ?? this.skipGettingStarted, connectivityStream: connectivityStream);
   }
 

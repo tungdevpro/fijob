@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
 import 'package:yh_basic/local_storage/hive/hive_client_primitive.dart';
 
-@injectable
+@singleton
 class HiveClientPrimitiveFactory {
-  Future<HiveClientPrimitive<K, V>> createClient<K, V>({required String boxName}) async {
+  HiveClientPrimitive<K, V> createClient<K, V>({required String boxName}) {
     return HiveClientPrimitive(boxName: boxName);
   }
 }

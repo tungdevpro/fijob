@@ -28,7 +28,7 @@ class LoginSubmitted extends LoginEvent {
   List<Object?> get props => [email, password];
 }
 
-class TogglePasswordEvent extends LoginEvent {
+class LoginTogglePasswordEvent extends LoginEvent {
   @override
   List<Object?> get props => [];
 }

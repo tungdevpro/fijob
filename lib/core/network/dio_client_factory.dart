@@ -4,8 +4,7 @@ import 'package:yh_basic/yh_basic.dart';
 @lazySingleton
 class DioClientFactory {
   DioHelper createClient() {
-    var client = DioHelper();
-    client.init();
+    var client = DioHelper()..init();
     return client;
   }
 }

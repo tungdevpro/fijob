@@ -9,7 +9,7 @@ class DioHelper implements LibraryInitializer {
   }
 
   @override
-  Future<void> init() async {
+  Future<void> init({List<InterceptorsWrapper>? interceptors}) async {
     _dio = Dio();
 
     _dio.options = BaseOptions(
@@ -19,6 +19,7 @@ class DioHelper implements LibraryInitializer {
       connectTimeout: DioConstants.timeout,
       receiveTimeout: DioConstants.timeout,
     );
+    if(!empty(interceptors)) _dio.interceptors.addAll(interceptors!);
   }
 
   Future<ApiResponse<T>> get<T>(

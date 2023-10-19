@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/core/app/app_cubit.dart';
 import 'package:yh_basic/core/app/app_info.dart';
 import 'package:yh_basic/yh_basic.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'types.dart';
 
@@ -55,6 +56,11 @@ class _ApplicationState extends State<Application> {
           themeMode: widget.themeMode,
           theme: widget.theme,
           locale: widget.startLocale,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           supportedLocales: widget.supportedLocales ?? <Locale>[],
         );
       },

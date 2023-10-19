@@ -10,9 +10,10 @@ import 'package:yh_basic/yh_basic.dart';
 
 void main() {
   init(
-    site: const Site(id: AppConsants.id, title: AppConsants.title, domain: AppConsants.domain),
+    site: const Site(id: AppConstants.id, domain: AppConstants.domain, title: AppConstants.title),
     routerConfig: Routes.router,
-    startLocale: AppConsants.startLocale,
+    startLocale: AppConstants.startLocale,
+    supportedLocales: AppConstants.supportedLocales,
     loginOption: LoginOption.required,
     useCaching: true,
     providers: [

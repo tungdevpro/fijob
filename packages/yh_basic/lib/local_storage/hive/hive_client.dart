@@ -4,8 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:yh_basic/types.dart';
 import 'package:yh_basic/yh_basic.dart';
 
-import '../../utils/either_extensions.dart';
-
 class HiveClient<K, V> {
   final String boxName;
   final JsonCodec<V?> jsonCodec;

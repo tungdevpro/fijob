@@ -42,8 +42,7 @@ class CustomButton extends StatelessWidget {
       onPressed: onTap,
       style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(bgColor),
-          shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimens.radius), side: BorderSide(color: borderColor ?? bgColor)))),
+          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimension.radius), side: BorderSide(color: borderColor ?? bgColor)))),
       child: title is Widget ? title : Text(title, style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: FontWeight.w600)),
     );
   }

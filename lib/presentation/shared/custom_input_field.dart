@@ -24,11 +24,11 @@ class CustomInputField extends StatelessWidget {
         prefixIcon: Padding(padding: const EdgeInsets.all(13), child: prefixIcon),
         errorText: errorText,
         border: OutlineInputBorder(
-            borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimens.radius)),
+            borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimension.radius)),
         enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimens.radius)),
+            borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimension.radius)),
         focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimens.radius)),
+            borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimension.radius)),
       ),
     );
   }

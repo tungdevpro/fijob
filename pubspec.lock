@@ -390,7 +390,7 @@ packages:
     source: hosted
     version: "2.1.2"
   go_router:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: go_router
       sha256: "1bd28265168045adb2df3da178bdbd44d37dddca0e7cfc867f8665d4f6b31f0c"

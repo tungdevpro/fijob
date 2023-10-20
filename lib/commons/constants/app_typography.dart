@@ -9,4 +9,7 @@ abstract class AppTypography {
   static const double mediumFs = 14.0;
   static const double largeFs = 16.0;
   static const double extraLargeFs = 18.0;
+  static const double maxLargeFs = 24.0;
+  static const String fontFamily = 'PlusJakartaSans';
+
 }

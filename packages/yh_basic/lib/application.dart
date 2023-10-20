@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/core/app/app_cubit.dart';
 import 'package:yh_basic/core/app/app_info.dart';
 import 'package:yh_basic/yh_basic.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'types.dart';
@@ -15,7 +16,8 @@ class Application extends StatefulWidget {
   final List<Locale>? supportedLocales;
   final Locale? fallbackLocale;
   final List<AsyncCallbackFunc>? callInMyApps;
-  final RouterConfig<Object> routerConfig;
+  final RouteFactory? onGenerateRoute;
+  final String initialRoute;
 
   const Application({
     Key? key,
@@ -26,7 +28,7 @@ class Application extends StatefulWidget {
     this.supportedLocales,
     this.fallbackLocale,
     this.callInMyApps,
-    required this.routerConfig,
+    this.onGenerateRoute, required this.initialRoute,
   }) : super(key: key);
 
   @override
@@ -48,10 +50,11 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppInfo>(
       builder: (context, state) {
-        return MaterialApp.router(
+        return MaterialApp(
           title: AppGlobal.I().site.title,
           debugShowCheckedModeBanner: false,
-          routerConfig: widget.routerConfig,
+          onGenerateRoute: widget.onGenerateRoute,
+          initialRoute: widget.initialRoute,
           darkTheme: widget.darkTheme,
           themeMode: widget.themeMode,
           theme: widget.theme,

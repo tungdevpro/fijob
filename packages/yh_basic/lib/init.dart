@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/application.dart';
 import 'package:yh_basic/core/app/app_cubit.dart';
@@ -9,10 +9,15 @@ import 'package:yh_basic/yh_basic.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/single_child_widget.dart';
 
+import 'core/app/app_bloc_observer.dart';
+
 void init({
   required Site site,
   Widget? child,
   List<String> boxs = const [],
+  ThemeData? theme,
+  ThemeMode themeMode = ThemeMode.light,
+  ThemeData? darkTheme,
   Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
   Locale? startLocale,
   List<AsyncCallbackFunc>? asyncCallbacks,
@@ -20,10 +25,12 @@ void init({
   List<VoidCallback>? callbacks,
   LoginOption loginOption = LoginOption.none,
   bool useCaching = false,
-  required RouterConfig<Object> routerConfig,
   required List<SingleChildWidget> providers,
+  RouteFactory? onGenerateRoute,
+  required String initialRoute,
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = AppBlocObserver();
   HttpOverrides.global = MyHttpOverrides();
 
   AppGlobal.I(siteParam: site);
@@ -47,7 +54,11 @@ void init({
         ...providers,
       ],
       child: Application(
-        routerConfig: routerConfig,
+        initialRoute: initialRoute,
+        theme: theme,
+        themeMode: themeMode,
+        darkTheme: darkTheme,
+        onGenerateRoute: onGenerateRoute,
         startLocale: startLocale,
         supportedLocales: List<Locale>.from(supportedLocales),
       ),

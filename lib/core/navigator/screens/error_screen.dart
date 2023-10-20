@@ -1,5 +1,5 @@
+import 'package:fijob/core/navigator/route_path.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key});
@@ -13,7 +13,7 @@ class ErrorScreen extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => context.go("/"),
+          onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(RoutePath.initial, (route) => false),
           child: const Text("Go to home page"),
         ),
       ),

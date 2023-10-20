@@ -1,6 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:fijob/core/navigator/screens/internet_status_page.dart';
-import 'package:fijob/presentation/splash/components/initial_content.dart';
+import 'package:fijob/presentation/splash/components/splash_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/core/app/app_cubit.dart';
@@ -16,7 +16,7 @@ class SplashPage extends StatelessWidget {
         final hasConnected = [ConnectivityResult.wifi, ConnectivityResult.ethernet, ConnectivityResult.mobile].contains(snapshot.data);
         return Stack(
           fit: StackFit.expand,
-          children: [const InitialContent(), if (!hasConnected && snapshot.connectionState != ConnectionState.waiting) const InternetStatusPage()],
+          children: [const SplashContent(), if (!hasConnected && snapshot.connectionState != ConnectionState.waiting) const InternetStatusPage()],
         );
       },
     );

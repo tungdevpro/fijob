@@ -1,5 +1,4 @@
-import 'package:fijob/core/storage/hive_client_primitive_factory.dart';
-import 'package:fijob/di/di.dart';
+import 'package:fijob/presentation/getting_started/getting_started_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/core/app/app_cubit.dart';
@@ -8,17 +7,16 @@ import 'package:yh_basic/core/app/app_info.dart';
 import '../../../commons/constants/asset/image_resource.dart';
 import '../../../commons/constants/color_constant.dart';
 
-class InitialContent extends StatefulWidget {
-  const InitialContent({super.key});
+class SplashContent extends StatefulWidget {
+  const SplashContent({super.key});
 
   @override
-  State<InitialContent> createState() => _InitialContentState();
+  State<SplashContent> createState() => _SplashContentState();
 }
 
-class _InitialContentState extends State<InitialContent> {
+class _SplashContentState extends State<SplashContent> {
   @override
   void initState() {
-    // context.read<AppCubit>().handleSkipGettingStarted();
     super.initState();
   }
 
@@ -33,8 +31,13 @@ class _InitialContentState extends State<InitialContent> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image.asset(ImageResource.imgSplash, width: 100),
-                  Text("data: ${state.skipGettingStarted}"),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GettingStartedPage()));
+                      // context.push(RoutePath.gettingStarted);
+                    },
+                    child: Image.asset(ImageResource.imgSplash, width: 100),
+                  ),
                 ],
               ),
             );

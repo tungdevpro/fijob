@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:fijob/data/data_sources/remote/api_client_service.dart';
 import 'package:fijob/data/repository_impls/auth_repository_impl.dart';
 import 'package:fijob/di/di.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yh_basic/core/base_function.dart';
+
+import '../common/base_function.dart';
 
 @immutable
 abstract class Helper {

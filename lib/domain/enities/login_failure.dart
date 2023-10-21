@@ -1,4 +1,4 @@
-import 'package:yh_basic/core/domain/entities/has_displayable_failure.dart';
+import 'package:yh_basic/domain/entities/has_displayable_failure.dart';
 
 enum LoginFailureType {
   unknown,

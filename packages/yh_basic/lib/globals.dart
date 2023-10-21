@@ -8,7 +8,7 @@ class Site {
 
 class AppGlobal {
   AppGlobal._internal(Site? siteParam) {
-    site = siteParam ?? const Site(id: "1", title: "Application", domain: "localhost:8080");
+    site = siteParam ?? const Site(id: "1", title: "Application", domain: "http://127.0.0.1:8080");
   }
   static AppGlobal? _instance;
 

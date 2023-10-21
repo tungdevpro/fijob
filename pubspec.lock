@@ -281,6 +281,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  fijob_ui_componts:
+    dependency: "direct main"
+    description:
+      path: "packages/fijob_ui_componts"
+      relative: true
+    source: path
+    version: "0.0.1"
   file:
     dependency: transitive
     description:
@@ -1006,13 +1013,6 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/yh_basic"
-      relative: true
-    source: path
-    version: "0.0.1"
-  yh_ui:
-    dependency: "direct main"
-    description:
-      path: "packages/yh_ui"
       relative: true
     source: path
     version: "0.0.1"

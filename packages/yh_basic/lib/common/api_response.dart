@@ -1,4 +1,5 @@
-import 'package:yh_basic/constants/network_constant.dart';
+
+import 'constants/network_constant.dart';
 
 class ApiResponse<T> {
   final int? code;

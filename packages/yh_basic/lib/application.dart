@@ -4,9 +4,7 @@ import 'package:yh_basic/yh_basic.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'app/app_cubit.dart';
-import 'app/app_info.dart';
-import 'types.dart';
+import 'common/types.dart';
 
 class Application extends StatefulWidget {
   final Locale? startLocale;
@@ -28,7 +26,8 @@ class Application extends StatefulWidget {
     this.supportedLocales,
     this.fallbackLocale,
     this.callInMyApps,
-    this.onGenerateRoute, required this.initialRoute,
+    this.onGenerateRoute,
+    required this.initialRoute,
   }) : super(key: key);
 
   @override

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive/hive.dart';
 
-import '../../core/domain/entities/local_storage_failure.dart';
+import '../../domain/entities/local_storage_failure.dart';
 import '../../utils/either_extensions.dart';
 
 class HiveClientPrimitive<K, V> {

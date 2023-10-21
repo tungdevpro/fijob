@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:dartz/dartz.dart';
-import 'package:yh_basic/types.dart';
+import 'package:yh_basic/common/types.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 class HiveClient<K, V> {

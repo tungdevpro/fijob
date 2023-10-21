@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import '../core/domain/repositories/device_platform.dart';
+import '../domain/repositories/device_platform.dart';
 
 class DevicePlatformProvider {
   DevicePlatform get currentPlatform {

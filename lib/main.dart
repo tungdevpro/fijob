@@ -7,7 +7,7 @@ import 'package:fijob/presentation/shared/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/types.dart';
+import 'package:yh_basic/common/types.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 void main() {

@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/utils/duration_provider.dart';
 
 import '../../commons/constants/color_constant.dart';
-import 'components/getting_started_constants.dart';
+import 'getting_started_constants.dart';
 
 class GettingStartedPage extends StatelessWidget {
   const GettingStartedPage({super.key});

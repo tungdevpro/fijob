@@ -1,5 +1,5 @@
 import 'package:fijob/domain/enities/getting_started_entity.dart';
-import 'package:fijob/presentation/getting_started/components/getting_started_constants.dart';
+import 'package:fijob/presentation/getting_started/getting_started_constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:yh_basic/yh_basic.dart';

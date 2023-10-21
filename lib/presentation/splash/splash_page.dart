@@ -3,7 +3,7 @@ import 'package:fijob/core/navigator/screens/internet_status_page.dart';
 import 'package:fijob/presentation/splash/components/splash_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/core/app/app_cubit.dart';
+import 'package:yh_basic/app/app_cubit.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});

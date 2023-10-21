@@ -3,13 +3,14 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/application.dart';
-import 'package:yh_basic/core/app/app_cubit.dart';
 import 'package:yh_basic/types.dart';
 import 'package:yh_basic/yh_basic.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/single_child_widget.dart';
 
-import 'core/app/app_bloc_observer.dart';
+import 'app/app_bloc_observer.dart';
+import 'app/app_cubit.dart';
+
 
 void init({
   required Site site,

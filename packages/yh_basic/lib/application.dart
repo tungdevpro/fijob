@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/core/app/app_cubit.dart';
-import 'package:yh_basic/core/app/app_info.dart';
 import 'package:yh_basic/yh_basic.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'app/app_cubit.dart';
+import 'app/app_info.dart';
 import 'types.dart';
 
 class Application extends StatefulWidget {

@@ -1,8 +1,8 @@
 import 'package:fijob/presentation/getting_started/getting_started_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/core/app/app_cubit.dart';
-import 'package:yh_basic/core/app/app_info.dart';
+import 'package:yh_basic/app/app_cubit.dart';
+import 'package:yh_basic/app/app_info.dart';
 
 import '../../../commons/constants/asset/image_resource.dart';
 import '../../../commons/constants/color_constant.dart';

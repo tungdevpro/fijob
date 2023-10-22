@@ -1,2 +1,3 @@
 flutter packages pub run build_runner build
-echo "run build successfully!"
+echo "run build successfully!....................."
+

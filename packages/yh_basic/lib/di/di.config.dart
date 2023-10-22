@@ -25,7 +25,7 @@ _i1.GetIt initBasicGetIt(
     environment,
     environmentFilter,
   );
-  gh.lazySingleton<_i3.AppNavigator>(() => _i3.AppNavigator());
+  gh.factory<_i3.AppNavigator>(() => _i3.AppNavigator());
   gh.singleton<_i4.HiveClientPrimitiveFactory>(
       _i4.HiveClientPrimitiveFactory());
   return getIt;

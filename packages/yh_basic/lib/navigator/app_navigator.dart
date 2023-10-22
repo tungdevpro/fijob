@@ -6,7 +6,7 @@ import '../utils/duration_provider.dart';
 import 'transitions/fade_in_page_transition.dart';
 import 'transitions/slide_bottom_page_transition.dart';
 
-@lazySingleton
+@injectable
 class AppNavigator {
   BuildContext? _context;
 
@@ -30,9 +30,8 @@ class AppNavigator {
     return _navigator(context, useRoot: useRoot).push(route);
   }
 
-  Future<dynamic> pushNamed(String routeName, {dynamic arguments}) async {
-    if (_context == null) return;
-    return await Navigator.pushNamed(_context!, routeName, arguments: arguments);
+  Future<R?> pushNamed<R>(String routeName, {R? arguments, bool useRoot = false}) async {
+    return _navigator(context, useRoot: useRoot).pushNamed(routeName, arguments: arguments);
   }
 
   Future<R?> pushReplacement<R>(Route<R> route, {BuildContext? context, bool useRoot = false}) async {

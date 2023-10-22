@@ -5,10 +5,8 @@ import 'package:injectable/injectable.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 @injectable
-class GettingStartedCubit extends Cubit<int> implements LibraryInitializer {
-  GettingStartedCubit() : super(1) {
-    init();
-  }
+class GettingStartedCubit extends Cubit<int> implements LibraryInitializer, BlocInitializer<GettingStartedCubit> {
+  GettingStartedCubit() : super(1);
 
   List<GettingStartedEntity> resource = GettingStartedConstants.db;
 
@@ -28,4 +26,7 @@ class GettingStartedCubit extends Cubit<int> implements LibraryInitializer {
   }
 
   void gotoHome() {}
+
+  @override
+  GettingStartedCubit initBloc() => GettingStartedCubit();
 }

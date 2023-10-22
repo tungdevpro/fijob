@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../domain/validators/email_validate.dart';
-import '../../../domain/validators/password_validate.dart';
+import '../../../../domain/validators/email_validate.dart';
+import '../../../../domain/validators/password_validate.dart';
 
 enum LoginStatus { none, success, failure, validating }
 

@@ -2,8 +2,8 @@ import 'package:fijob/core/navigator/route_path.dart';
 import 'package:fijob/core/navigator/screens/error_screen.dart';
 import 'package:fijob/presentation/getting_started/getting_started_page.dart';
 import 'package:fijob/presentation/splash/splash_page.dart';
-import 'package:fijob/presentation/login/login_page.dart';
-import 'package:fijob/presentation/register/register_page.dart';
+import 'package:fijob/presentation/auth/login/login_page.dart';
+import 'package:fijob/presentation/auth/register/register_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

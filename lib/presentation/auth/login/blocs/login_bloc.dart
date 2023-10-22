@@ -2,10 +2,11 @@ import 'package:fijob/data/data_sources/remote/api_client_service.dart';
 import 'package:fijob/data/repository_impls/auth_repository_impl.dart';
 import 'package:fijob/di/di.dart';
 import 'package:fijob/domain/domain.dart';
-import 'package:fijob/presentation/login/blocs/login_event.dart';
-import 'package:fijob/presentation/login/blocs/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
+import 'login_event.dart';
+import 'login_state.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {

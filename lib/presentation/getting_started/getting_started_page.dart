@@ -1,19 +1,34 @@
 import 'package:fijob/commons/constants/app_dimens.dart';
 import 'package:fijob/commons/constants/app_typography.dart';
+import 'package:fijob/core/navigator/route_path.dart';
+import 'package:fijob/di/di.dart';
 import 'package:fijob/presentation/getting_started/blocs/getting_started_cubit.dart';
 import 'package:fijob/presentation/getting_started/components/dot_comp.dart';
 import 'package:fijob/presentation/shared/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yh_basic/navigator/app_navigator.dart';
 import 'package:yh_basic/utils/duration_provider.dart';
 
 import '../../commons/constants/color_constant.dart';
 import 'getting_started_constants.dart';
 
-class GettingStartedPage extends StatelessWidget {
+class GettingStartedPage extends StatefulWidget {
   const GettingStartedPage({super.key});
 
-  static final GettingStartedCubit _cubit = GettingStartedCubit();
+
+  @override
+  State<GettingStartedPage> createState() => _GettingStartedPageState();
+}
+
+class _GettingStartedPageState extends State<GettingStartedPage> {
+  final GettingStartedCubit _cubit = GettingStartedCubit();
+
+  @override
+  void initState() {
+    _cubit.setContext(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +103,7 @@ class GettingStartedPage extends StatelessWidget {
                       const DotComp(),
                       const SizedBox(height: AppDimension.paddingXXL),
                       CustomButton(
-                        onTap: () => _onNextStep(context),
+                        onTap: () => _cubit.nextStep(),
                         title: Padding(
                           padding: const EdgeInsets.symmetric(vertical: AppDimension.padding, horizontal: AppDimension.maxPadding),
                           child: BlocBuilder<GettingStartedCubit, int>(
@@ -111,12 +126,5 @@ class GettingStartedPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _onNextStep(BuildContext context) {
-    if (_cubit.state == _cubit.totalStep) {
-      return;
-    }
-    _cubit.next();
   }
 }

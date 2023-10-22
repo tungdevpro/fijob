@@ -12,8 +12,8 @@ class AppNavigator {
 
   BuildContext get context => _context!;
 
-  void setContext(BuildContext ctx) {
-    _context = ctx;
+  void setContext(BuildContext context) {
+    _context = context;
   }
 
   @protected
@@ -26,33 +26,29 @@ class AppNavigator {
 
   static BuildContext get rootNavigatorContext => navigatorKey.currentContext!;
 
-  Future<R?> push<R>(Route<R> route, {BuildContext? context, bool useRoot = false}) async {
-    return _navigator(context, useRoot: useRoot).push(route);
+  Future<R?> push<R>(Route<R> route, {bool useRoot = false}) async {
+    return _navigator(_context, useRoot: useRoot).push(route);
   }
 
   Future<R?> pushNamed<R>(String routeName, {R? arguments, bool useRoot = false}) async {
-    return _navigator(context, useRoot: useRoot).pushNamed(routeName, arguments: arguments);
+    return _navigator(_context, useRoot: useRoot).pushNamed(routeName, arguments: arguments);
   }
 
-  Future<R?> pushReplacement<R>(Route<R> route, {BuildContext? context, bool useRoot = false}) async {
-    return _navigator(context, useRoot: useRoot).pushReplacement(route);
+  Future<R?> pushReplacement<R>(Route<R> route, {bool useRoot = false}) async {
+    return _navigator(_context, useRoot: useRoot).pushReplacement(route);
   }
 
-  Future<R?> pushAndRemoveUntilRoot<R>(Route<R> route, {BuildContext? context, bool useRoot = false}) async {
-    return _navigator(context, useRoot: useRoot).pushAndRemoveUntil(route, (route) => false);
+  Future<R?> pushAndRemoveUntilRoot<R>(Route<R> route, {bool useRoot = false}) async {
+    return _navigator(_context, useRoot: useRoot).pushAndRemoveUntil(route, (route) => false);
   }
 
-  void close({BuildContext? context}) => closeWithResult(null, context: context);
+  void close() => closeWithResult(null);
 
-  void closeWithResult<T>(
-    T result, {
-    BuildContext? context,
-  }) =>
-      _navigator(context).canPop() ? _navigator(context).pop(result) : result;
+  void closeWithResult<T>(T result) => _navigator(_context).canPop() ? _navigator(_context).pop(result) : result;
 
-  void popUntilRoot([BuildContext? context]) => _navigator(context).popUntil((route) => false);
+  void popUntilRoot() => _navigator(_context).popUntil((route) => false);
 
-  void popUntilPageWithName(String title, {BuildContext? context}) => _navigator(context).popUntil(ModalRoute.withName(title));
+  void popUntilPageWithName(String title) => _navigator(_context).popUntil(ModalRoute.withName(title));
 }
 
 NavigatorState _navigator(BuildContext? context, {bool useRoot = false}) {

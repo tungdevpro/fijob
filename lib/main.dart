@@ -2,7 +2,7 @@ import 'package:fijob/commons/constants/app_constant.dart';
 import 'package:fijob/core/navigator/route_path.dart';
 import 'package:fijob/core/navigator/routes.dart';
 import 'package:fijob/di/di.dart';
-import 'package:fijob/presentation/auth/blocs/auth_bloc.dart';
+import 'package:fijob/presentation/auth/bloc/auth_bloc.dart';
 import 'package:fijob/presentation/shared/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -9,6 +9,7 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
 
   BaseBloc(S initState) : super(initState) {
     _isMounted = true;
+    listEvent();
     WidgetsBinding.instance.addObserver(this);
   }
 

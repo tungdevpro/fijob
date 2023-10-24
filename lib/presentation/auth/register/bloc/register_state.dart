@@ -13,24 +13,28 @@ class RegisterState extends BaseState {
   final EmailValidateModel email;
   final PasswordValidateModel password;
   final bool showPassword;
+  final bool isNextComplete;
 
   RegisterState(
       {this.status = RegisterStatus.none,
       this.fullName = const FullNameValidateModel.pure(),
       this.email = const EmailValidateModel.pure(),
       this.password = const PasswordValidateModel.pure(),
-      this.showPassword = false});
+      this.showPassword = false,
+      this.isNextComplete = false});
 
-  RegisterState copyWith({RegisterStatus? status, FullNameValidateModel? fullName, EmailValidateModel? email, PasswordValidateModel? password, bool? showPassword}) {
+  RegisterState copyWith(
+      {RegisterStatus? status, FullNameValidateModel? fullName, EmailValidateModel? email, PasswordValidateModel? password, bool? showPassword, bool? isNextComplete}) {
     return RegisterState(
       status: status ?? this.status,
       fullName: fullName ?? this.fullName,
       email: email ?? this.email,
       password: password ?? this.password,
       showPassword: showPassword ?? this.showPassword,
+      isNextComplete: isNextComplete ?? this.isNextComplete,
     );
   }
 
   @override
-  List<Object?> get props => [status, fullName, email, password, showPassword];
+  List<Object?> get props => [status, fullName, email, password, showPassword, isNextComplete];
 }

@@ -30,3 +30,11 @@ class TogglePasswordEvent extends RegisterEvent {
   @override
   List<Object?> get props => [];
 }
+
+class RegisterNextStepCompleteEvent extends RegisterEvent {
+  final bool isNextComplete;
+  RegisterNextStepCompleteEvent(this.isNextComplete);
+
+  @override
+  List<Object?> get props => [isNextComplete];
+}

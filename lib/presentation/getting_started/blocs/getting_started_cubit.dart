@@ -36,7 +36,7 @@ class GettingStartedCubit extends Cubit<int> implements LibraryInitializer {
 
   void nextStep() {
     if (state >= totalStep) {
-      appNavigator.pushNamed<void>(RoutePath.register);
+      appNavigator.pushNamed<void>(RoutePath.register, arguments: "this is name");
       return;
     }
     next();

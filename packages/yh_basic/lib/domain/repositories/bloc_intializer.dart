@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 abstract class BlocInitializer<T> {
-  T initBloc();
+  T to();
 }

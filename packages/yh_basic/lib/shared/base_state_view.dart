@@ -21,4 +21,10 @@ abstract class BaseStateView<P extends StatefulWidget, T extends BaseBloc<BaseEv
   }
 
   T get initBloc => context.read<T>();
+
+  @override
+  void dispose() {
+    _bloc?.close();
+    super.dispose();
+  }
 }

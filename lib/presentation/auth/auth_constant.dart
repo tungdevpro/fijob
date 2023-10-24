@@ -13,7 +13,7 @@ abstract class AuthConstant {
   static const String hasAccount = 'Already have an account?';
   static const String shortLoginLabel = 'Login';
   static const List<String> termsCondition = ['By signing up you agree to our', 'Terms' , 'and', 'Conditions of Use'];
-  static const String completeLabel = 'Complete your account';
+  static const String nextStepCompleteLabel = 'Complete your account';
   static const String firstNameField = 'First Name';
   static const String firstNameFieldPlaceholder = 'Enter your first name';
   static const String lastNameField = 'Last Name';

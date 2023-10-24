@@ -10,6 +10,8 @@ class CustomButton extends StatelessWidget {
   final Color fontColor;
   final double fontSize;
   final Color? borderColor;
+  final EdgeInsets? padding;
+
   const CustomButton({
     super.key,
     this.onTap,
@@ -18,20 +20,21 @@ class CustomButton extends StatelessWidget {
     this.fontColor = ColorConstants.white,
     this.fontSize = AppTypography.mediumFs,
     this.borderColor,
+    this.padding,
   });
 
-  factory CustomButton.secondary({dynamic title, VoidCallback? onTap, double? fontSize}) {
+  factory CustomButton.secondary({dynamic title, VoidCallback? onTap, double? fontSize, Color? fontColor}) {
     return CustomButton(
         onTap: onTap,
-        title: Text(title, style: TextStyle(color: ColorConstants.gray100, fontSize: fontSize, fontWeight: FontWeight.w600)),
+        title: title is Widget ? title : Text(title, style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: FontWeight.w600)),
         bgColor: Colors.white,
         borderColor: ColorConstants.gray100);
   }
 
-  factory CustomButton.disable({dynamic title, VoidCallback? onTap, double? fontSize}) {
+  factory CustomButton.disable({dynamic title, VoidCallback? onTap, double? fontSize, Color? fontColor}) {
     return CustomButton(
         onTap: onTap,
-        title: Text(title, style: TextStyle(color: ColorConstants.gray60, fontSize: fontSize, fontWeight: FontWeight.w600)),
+        title: title is Widget ? title : Text(title, style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: FontWeight.w600)),
         bgColor: ColorConstants.gray60,
         borderColor: ColorConstants.gray60);
   }
@@ -41,6 +44,7 @@ class CustomButton extends StatelessWidget {
     return TextButton(
       onPressed: onTap,
       style: ButtonStyle(
+          padding: MaterialStateProperty.all(padding ?? const EdgeInsets.symmetric(vertical: AppDimension.paddingLG, horizontal: AppDimension.paddingXXL)),
           backgroundColor: MaterialStateProperty.all<Color>(bgColor),
           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppDimension.radius), side: BorderSide(color: borderColor ?? bgColor)))),
       child: title is Widget ? title : Text(title, style: TextStyle(color: fontColor, fontSize: fontSize, fontWeight: FontWeight.w600)),

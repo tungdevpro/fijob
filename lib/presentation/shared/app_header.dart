@@ -34,9 +34,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
     this.titleTextStyle,
     this.systemOverlayStyle,
     this.leadingIconColor,
-  }) : preferredSize = Size.fromHeight(
-          height ?? kToolbarHeight,
-        );
+  }) : preferredSize = Size.fromHeight(height ?? kToolbarHeight);
 
   final String? text;
   final VoidCallback? onLeadingPressed;
@@ -91,9 +89,9 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
       systemOverlayStyle: systemOverlayStyle,
       leading: leadingIcon == LeadingIcon.hambuger || leadingIcon == LeadingIcon.none
           ? null
-          : GestureDetector(
-              onTap: onLeadingPressed ?? () => Navigator.of(context).pop(),
-              child: Container(
+          : IconButton(
+              onPressed: onLeadingPressed ?? () => Navigator.of(context).pop(),
+              icon: Container(
                 padding: const EdgeInsets.only(left: AppDimension.padding),
                 child: SvgPicture.asset(leadingIcon == LeadingIcon.close ? IconResource.icX : IconResource.icArrowLeft, fit: BoxFit.scaleDown),
               ),

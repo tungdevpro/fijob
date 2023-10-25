@@ -9,8 +9,9 @@ class CustomInputField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final String? errorText;
   final dynamic labelText;
+  final TextEditingController? controller;
 
-  const CustomInputField({super.key, this.prefixIcon, this.hintText, this.suffixIcon, this.onChanged, this.errorText, this.labelText});
+  const CustomInputField({super.key, this.prefixIcon, this.hintText, this.suffixIcon, this.onChanged, this.errorText, this.labelText, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class CustomInputField extends StatelessWidget {
           child: Text(labelText, style: const TextStyle(fontWeight: FontWeight.w500, color: ColorConstants.gray100)),
         ),
         TextFormField(
+          controller: controller,
           cursorColor: ColorConstants.gray70,
           cursorWidth: 1,
           onChanged: (value) => onChanged?.call(value),

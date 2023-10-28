@@ -16,7 +16,7 @@ import '../data/data_sources/remote/api_client_service.dart' as _i9;
 import '../data/repository_impls/auth_repository_impl.dart' as _i11;
 import '../domain/domain.dart' as _i10;
 import '../presentation/auth/bloc/auth_bloc.dart' as _i3;
-import '../presentation/auth/login/blocs/login_bloc.dart' as _i6;
+import '../presentation/auth/login/bloc/login_bloc.dart' as _i6;
 import '../presentation/auth/register/bloc/register_bloc.dart' as _i7;
 import '../presentation/getting_started/blocs/getting_started_cubit.dart'
     as _i5;

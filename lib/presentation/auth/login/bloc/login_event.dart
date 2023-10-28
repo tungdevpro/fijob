@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
+import 'package:yh_basic/common/blocs/base_event.dart';
 
-abstract class LoginEvent extends Equatable {}
+abstract class LoginEvent extends BaseEvent {}
 
 class LoginEmailChanged extends LoginEvent {
   final String email;

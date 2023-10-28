@@ -1,17 +1,18 @@
 import 'package:equatable/equatable.dart';
+import 'package:yh_basic/yh_basic.dart';
 
 import '../../../../domain/validators/email_validate.dart';
 import '../../../../domain/validators/password_validate.dart';
 
 enum LoginStatus { none, success, failure, validating }
 
-class LoginState extends Equatable {
+class LoginState extends BaseState {
   final LoginStatus status;
   final EmailValidateModel email;
   final PasswordValidateModel password;
   final bool showPassword;
 
-  const LoginState(
+  LoginState(
       {this.status = LoginStatus.none,
       this.email = const EmailValidateModel.pure(),
       this.password = const PasswordValidateModel.pure(),

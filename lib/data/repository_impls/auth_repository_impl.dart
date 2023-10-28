@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:fijob/data/data_sources/remote/api_client_service.dart';
+import 'package:fijob/data/data_source/remote/api_client_service.dart';
 import 'package:fijob/domain/domain.dart';
 import 'package:injectable/injectable.dart';
 

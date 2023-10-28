@@ -12,7 +12,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../core/network/dio_client_factory.dart' as _i4;
-import '../data/data_sources/remote/api_client_service.dart' as _i9;
+import '../data/data_source/remote/api_client_service.dart' as _i9;
 import '../data/repository_impls/auth_repository_impl.dart' as _i11;
 import '../domain/domain.dart' as _i10;
 import '../presentation/auth/bloc/auth_bloc.dart' as _i3;

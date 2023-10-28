@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/common/types.dart';
+import 'package:yh_basic/di/di.dart';
 import 'package:yh_basic/globals.dart';
 
+import '../../navigator/app_navigator.dart';
 import 'base_event.dart';
 import 'base_state.dart';
 
 abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T, S> with WidgetsBindingObserver, RouteAware {
   late bool _isMounted;
   dynamic arguments;
+  final navigator = getIt<AppNavigator>();
 
   BaseBloc(S initState) : super(initState) {
     _isMounted = true;
@@ -59,7 +62,6 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
 
   void initialRouteSetting(RouteSettings? settings) {
     arguments = settings?.arguments;
-    print('arguments-----------> $arguments');
   }
 
   TypeArg convertArgumentToModel<TypeArg>(JsonCodec<TypeArg> cb) {

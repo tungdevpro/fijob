@@ -8,6 +8,8 @@ import 'package:yh_basic/yh_basic.dart';
 // ignore: depend_on_referenced_packages
 import 'package:provider/single_child_widget.dart';
 
+import 'di/di.dart';
+
 void init({
   required Site site,
   Widget? child,
@@ -29,6 +31,7 @@ void init({
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   HttpOverrides.global = MyHttpOverrides();
+  configureDependencies();
 
   AppGlobal.I(siteParam: site);
 

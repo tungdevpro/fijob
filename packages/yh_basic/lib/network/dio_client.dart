@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:yh_basic/yh_basic.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioHelper implements LibraryInitializer {
   late Dio _dio;
@@ -9,7 +10,7 @@ class DioHelper implements LibraryInitializer {
   }
 
   @override
-  Future<void> init({List<InterceptorsWrapper>? interceptors}) async {
+  Future<void> init({List<InterceptorsWrapper>? interceptors, bool hasLog = true}) async {
     _dio = Dio();
 
     _dio.options = BaseOptions(
@@ -19,7 +20,10 @@ class DioHelper implements LibraryInitializer {
       connectTimeout: DioConstants.timeout,
       receiveTimeout: DioConstants.timeout,
     );
-    if(!empty(interceptors)) _dio.interceptors.addAll(interceptors!);
+    if (!empty(interceptors)) _dio.interceptors.addAll(interceptors!);
+    if (hasLog) {
+      _dio.interceptors.add(PrettyDioLogger(requestHeader: true, requestBody: true, responseBody: true, responseHeader: false, compact: false));
+    }
   }
 
   Future<ApiResponse<T>> get<T>(

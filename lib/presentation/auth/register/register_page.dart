@@ -2,6 +2,7 @@ import 'package:fijob/commons/constants/app_dimens.dart';
 import 'package:fijob/commons/constants/app_typography.dart';
 import 'package:fijob/commons/constants/asset/icon_resource.dart';
 import 'package:fijob/commons/constants/color_constant.dart';
+import 'package:fijob/core/navigator/route_path.dart';
 import 'package:fijob/di/di.dart';
 import 'package:fijob/domain/validators/fullname_validate.dart';
 import 'package:fijob/presentation/auth/auth_constant.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yh_basic/navigator/app_navigator.dart';
 import 'package:yh_basic/shared/base_state_view.dart';
 
 import '../../shared/app_header.dart';
@@ -122,7 +124,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
               builder: (context, isNextComplete) {
                 return CustomButton(
                   onTap: () {
-                    if(!isNextComplete) {
+                    if (!isNextComplete) {
                       bloc.add(RegisterNextStepCompleteEvent(true));
                       return;
                     }
@@ -141,7 +143,9 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                   children: <TextSpan>[
                     const TextSpan(text: '${AuthConstant.hasAccount} '),
                     TextSpan(
-                        text: AuthConstant.shortLoginLabel, style: const TextStyle(color: ColorConstants.primary), recognizer: TapGestureRecognizer()..onTap = () => _onTapLogin()),
+                        text: AuthConstant.shortLoginLabel,
+                        style: const TextStyle(color: ColorConstants.primary),
+                        recognizer: TapGestureRecognizer()..onTap = () => _onGoToLogin()),
                   ],
                 ),
               ),
@@ -156,5 +160,5 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
     return Center(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: AppTypography.maxLargeFs)));
   }
 
-  void _onTapLogin() {}
+  void _onGoToLogin() => bloc.navigator.pushNamed(RoutePath.home);
 }

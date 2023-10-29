@@ -1,13 +1,10 @@
 import 'package:fijob/commons/constants/app_dimens.dart';
 import 'package:fijob/commons/constants/app_typography.dart';
-import 'package:fijob/core/navigator/route_path.dart';
-import 'package:fijob/di/di.dart';
 import 'package:fijob/presentation/getting_started/blocs/getting_started_cubit.dart';
 import 'package:fijob/presentation/getting_started/components/dot_comp.dart';
 import 'package:fijob/presentation/shared/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/navigator/app_navigator.dart';
 import 'package:yh_basic/utils/duration_provider.dart';
 
 import '../../commons/constants/color_constant.dart';

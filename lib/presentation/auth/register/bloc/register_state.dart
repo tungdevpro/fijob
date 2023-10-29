@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:yh_basic/common/blocs/base_state.dart';
 
 import '../../../../domain/validators/email_validate.dart';

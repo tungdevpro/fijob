@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/common/types.dart';
 import 'package:yh_basic/di/di.dart';
 import 'package:yh_basic/globals.dart';
 

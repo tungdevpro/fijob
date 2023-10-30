@@ -30,4 +30,8 @@ class ViewState<T> extends BaseState {
   bool get isEmpty => status == Status.empty;
 
   bool get isError => status == Status.error;
+
+  ViewState<T> copyWith({T? data, Status? status, dynamic error}) {
+    return ViewState<T>(data: data ?? this.data, status: status ?? this.status, error: error ?? this.error);
+  }
 }

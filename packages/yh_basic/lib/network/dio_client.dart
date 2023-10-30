@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:yh_basic/yh_basic.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -14,7 +15,10 @@ class DioHelper implements LibraryInitializer {
     _dio = Dio();
 
     _dio.options = BaseOptions(
-      baseUrl: AppGlobal.I().site.domain,
+      baseUrl: AppGlobal
+          .I()
+          .site
+          .domain,
       contentType: NetworkConstants.contentType,
       sendTimeout: DioConstants.timeout,
       connectTimeout: DioConstants.timeout,
@@ -22,12 +26,16 @@ class DioHelper implements LibraryInitializer {
     );
     if (!empty(interceptors)) _dio.interceptors.addAll(interceptors!);
     if (hasLog) {
-      _dio.interceptors.add(PrettyDioLogger(requestHeader: true, requestBody: true, responseBody: true, responseHeader: false, compact: false));
+      _dio.interceptors.add(PrettyDioLogger(requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          compact: false));
     }
   }
 
-  Future<ApiResponse<T>> get<T>(
-    String url, {
+  Future<ApiResponse<T>> get<T>(String url, {
+    Function? convertJson,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
@@ -35,21 +43,14 @@ class DioHelper implements LibraryInitializer {
   }) async {
     final dio = getDio();
     try {
-      final response = await dio.get(
-        url,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-        onReceiveProgress: onReceiveProgress,
-      );
-      return ApiResponse<T>(data: response.data);
+      final response = await dio.get(url, queryParameters: queryParameters, options: options, cancelToken: cancelToken, onReceiveProgress: onReceiveProgress);
+      return ApiResponse<T>.success((convertJson?.call(response.data) as T));
     } catch (e) {
       return ApiResponse.error(message: e.toString());
     }
   }
 
-  Future<ApiResponse<T>> post<T>(
-    String url, {
+  Future<ApiResponse<T>> post<T>(String url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -68,14 +69,13 @@ class DioHelper implements LibraryInitializer {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-      return ApiResponse.success(response.data);
+      return ApiResponse(data: response.data);
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<ApiResponse<T>> put<T>(
-    String url, {
+  Future<ApiResponse<T>> put<T>(String url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -94,14 +94,13 @@ class DioHelper implements LibraryInitializer {
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
-      return ApiResponse.success(response.data);
+      return ApiResponse(data: response.data);
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<ApiResponse<T>> delete<T>(
-    String url, {
+  Future<ApiResponse<T>> delete<T>(String url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -118,7 +117,7 @@ class DioHelper implements LibraryInitializer {
         options: options,
         cancelToken: cancelToken,
       );
-      return ApiResponse.success(response.data);
+      return ApiResponse(data: response.data);
     } catch (e) {
       rethrow;
     }

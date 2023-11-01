@@ -7,3 +7,8 @@ class HomeInitialEvent extends HomeEvent {
   @override
   List<Object?> get props => [];
 }
+
+class HomeGetPost extends HomeEvent {
+  @override
+  List<Object?> get props => [];
+}

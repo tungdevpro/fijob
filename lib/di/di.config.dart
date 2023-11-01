@@ -11,17 +11,20 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../core/network/dio_client_factory.dart' as _i4;
-import '../data/data_source/remote/api_client_service.dart' as _i10;
-import '../data/repository_impls/auth_repository_impl.dart' as _i12;
-import '../domain/domain.dart' as _i11;
-import '../presentation/auth/bloc/auth_bloc.dart' as _i3;
-import '../presentation/auth/login/bloc/login_bloc.dart' as _i7;
-import '../presentation/auth/register/bloc/register_bloc.dart' as _i8;
+import '../core/network/dio_client_factory.dart' as _i7;
+import '../data/data_source/remote/api_client_service.dart' as _i3;
+import '../data/repository_impls/auth_repository_impl.dart' as _i6;
+import '../data/repository_impls/home_repository_impl.dart' as _i11;
+import '../domain/domain.dart' as _i5;
+import '../domain/repositories/home_repository.dart' as _i10;
+import '../domain/usecases/home_get_new_job_usecase.dart' as _i15;
+import '../presentation/auth/bloc/auth_bloc.dart' as _i4;
+import '../presentation/auth/login/bloc/login_bloc.dart' as _i12;
+import '../presentation/auth/register/bloc/register_bloc.dart' as _i13;
 import '../presentation/getting_started/blocs/getting_started_cubit.dart'
-    as _i5;
-import '../presentation/home/bloc/home_bloc.dart' as _i6;
-import '../presentation/splash/blocs/splash_cubit.dart' as _i9;
+    as _i8;
+import '../presentation/home/bloc/home_bloc.dart' as _i9;
+import '../presentation/splash/blocs/splash_cubit.dart' as _i14;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt initGetIt(
@@ -34,16 +37,19 @@ _i1.GetIt initGetIt(
     environment,
     environmentFilter,
   );
-  gh.singleton<_i3.AuthBloc>(_i3.AuthBloc());
-  gh.lazySingleton<_i4.DioClientFactory>(() => _i4.DioClientFactory());
-  gh.factory<_i5.GettingStartedCubit>(() => _i5.GettingStartedCubit());
-  gh.factory<_i6.HomeBloc>(() => _i6.HomeBloc());
-  gh.factory<_i7.LoginBloc>(() => _i7.LoginBloc());
-  gh.factory<_i8.RegisterBloc>(() => _i8.RegisterBloc());
-  gh.factory<_i9.SplashCubit>(() => _i9.SplashCubit());
-  gh.lazySingleton<_i10.ApiClientService>(
-      () => _i10.ApiClientService(gh<_i4.DioClientFactory>()));
-  gh.lazySingleton<_i11.AuthRepository>(
-      () => _i12.AuthRepositoryImpl(gh<_i10.ApiClientService>()));
+  gh.lazySingleton<_i3.ApiClientService>(() => _i3.ApiClientService());
+  gh.singleton<_i4.AuthBloc>(_i4.AuthBloc());
+  gh.lazySingleton<_i5.AuthRepository>(
+      () => _i6.AuthRepositoryImpl(gh<_i3.ApiClientService>()));
+  gh.lazySingleton<_i7.DioClientFactory>(() => _i7.DioClientFactory());
+  gh.factory<_i8.GettingStartedCubit>(() => _i8.GettingStartedCubit());
+  gh.factory<_i9.HomeBloc>(() => _i9.HomeBloc());
+  gh.lazySingleton<_i10.HomeRepository>(
+      () => _i11.HomeRepositoryImpl(gh<_i3.ApiClientService>()));
+  gh.factory<_i12.LoginBloc>(() => _i12.LoginBloc());
+  gh.factory<_i13.RegisterBloc>(() => _i13.RegisterBloc());
+  gh.factory<_i14.SplashCubit>(() => _i14.SplashCubit());
+  gh.factory<_i15.HomeGetNewJobUseCase>(
+      () => _i15.HomeGetNewJobUseCase(gh<_i10.HomeRepository>()));
   return getIt;
 }

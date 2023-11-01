@@ -23,3 +23,6 @@ export './utils/either_extensions.dart';
 export './utils/helper.dart';
 export './utils/logger.dart';
 export './utils/string.dart';
+
+// Shared
+export './shared/shared.dart';

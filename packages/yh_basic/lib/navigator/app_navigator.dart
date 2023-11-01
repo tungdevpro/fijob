@@ -12,9 +12,7 @@ class AppNavigator {
 
   BuildContext get context => _context!;
 
-  void setContext(BuildContext context) {
-    _context = context;
-  }
+  void setContext(BuildContext context) => _context = context;
 
   @protected
   //should be modified ONLY by tests, debug page and setting it in MaterialApp

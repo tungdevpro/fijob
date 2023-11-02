@@ -1,6 +1,13 @@
+import 'package:cachex/cachex.dart';
 import 'package:dio/dio.dart';
 
 class CacheXBuilder {
+  CacheXBuilder(Configuration configuration) {
+    baseUrl = configuration.baseUrl ?? '';
+  }
+
+  late String baseUrl;
+
   InterceptorsWrapper? _interceptor;
 
   InterceptorsWrapper get interceptor {

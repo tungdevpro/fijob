@@ -3,7 +3,8 @@ class Site {
   final String domain;
   final String id;
   final int? port;
-  const Site({required this.id, required this.title, required this.domain, this.port});
+  final bool useCache;
+  const Site({required this.id, required this.title, required this.domain, this.port, this.useCache = false});
 }
 
 class AppGlobal {

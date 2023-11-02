@@ -18,22 +18,18 @@ import '../../../domain/enities/post_entity.dart';
 class HomeBloc extends BaseBloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeState(item: null));
 
-  static HomeBloc get to => getIt<HomeBloc>()..add(HomeGetPost());
+  static HomeBloc get to => getIt<HomeBloc>()..add(HomeGetPostEvent());
 
   final homeRepo = HomeRepositoryImpl(getIt<ApiClientService>());
 
   @override
   void listEvent() {
-    on<HomeGetPost>(_onGetPost);
+    on<HomeGetPostEvent>(_onGetPost);
   }
 
-  void _onGe2tPost(HomeGetPost event, Emitter<HomeState> emit) async {
+  void _onGetPost(HomeGetPostEvent event, Emitter<HomeState> emit) async {
     final response = await HomeGetNewJobUseCase(homeRepo).execute();
     response.fold((l) => null, (r) {
     });
-  }
-
-
-  void _onGetPost(HomeGetPost event, Emitter<ViewState<Post>> emit) {
   }
 }

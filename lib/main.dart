@@ -12,14 +12,13 @@ import 'package:yh_basic/yh_basic.dart';
 
 void main() {
   init(
-    site: const Site(id: AppConstants.id, domain: AppConstants.domain, title: AppConstants.title),
+    site: const Site(id: AppConstants.id, domain: AppConstants.domain, title: AppConstants.title, useCache: true),
     themeMode: ThemeManager.mode,
     theme: ThemeManager.light,
     initialRoute: RoutePath.initial,
     startLocale: AppConstants.startLocale,
     supportedLocales: AppConstants.supportedLocales,
     loginOption: LoginOption.required,
-    useCaching: true,
     onGenerateRoute: Routes.generateRoutes,
     providers: [
       BlocProvider(create: (_) => getIt<AuthBloc>()),

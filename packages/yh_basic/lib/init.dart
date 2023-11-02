@@ -23,7 +23,6 @@ void init({
   List<AsyncCallbackFunc>? callInMyApps,
   List<VoidCallback>? callbacks,
   LoginOption loginOption = LoginOption.none,
-  bool useCaching = false,
   required List<SingleChildWidget> providers,
   RouteFactory? onGenerateRoute,
   required String initialRoute,

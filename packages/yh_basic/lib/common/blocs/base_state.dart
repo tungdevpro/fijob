@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-enum Status { ready, loading, refreshing, success, empty, error }
+enum ViewStateStatus { ready, loading, refreshing, success, empty, error }
 
 abstract class BaseState extends Equatable {
   // const BaseState();
@@ -10,28 +10,28 @@ abstract class BaseState extends Equatable {
 }
 
 class ViewState<T> extends BaseState {
-  final Status status;
-  final T data;
+  final ViewStateStatus status;
+  final T? data;
   final dynamic error;
 
-  ViewState({this.status = Status.ready, required this.data, this.error});
+  ViewState({this.status = ViewStateStatus.ready, this.data, this.error});
 
   @override
   List get props => [status, data, error];
 
-  bool get isReady => status == Status.ready;
+  bool get isReady => status == ViewStateStatus.ready;
 
-  bool get isLoading => status == Status.loading;
+  bool get isLoading => status == ViewStateStatus.loading;
 
-  bool get isRefreshing => status == Status.refreshing;
+  bool get isRefreshing => status == ViewStateStatus.refreshing;
 
-  bool get isSuccess => status == Status.success;
+  bool get isSuccess => status == ViewStateStatus.success;
 
-  bool get isEmpty => status == Status.empty;
+  bool get isEmpty => status == ViewStateStatus.empty;
 
-  bool get isError => status == Status.error;
+  bool get isError => status == ViewStateStatus.error;
 
-  ViewState<T> copyWith({T? data, Status? status, dynamic error}) {
+  ViewState<T> copyWith({T? data, ViewStateStatus? status, dynamic error}) {
     return ViewState<T>(data: data ?? this.data, status: status ?? this.status, error: error ?? this.error);
   }
 }

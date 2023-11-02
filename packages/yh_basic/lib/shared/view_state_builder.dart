@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../common/blocs/base_state.dart';
 import '../common/types.dart';
 
-class ViewStateBuilder<T, B extends BlocBase<BaseState>> extends BlocBuilder<B, BaseState> {
+class ViewStateBuilder<B extends BlocBase<BaseState>> extends BlocBuilder<B, BaseState> {
   ViewStateBuilder({
     Key? key,
     B? bloc,
@@ -21,17 +21,17 @@ class ViewStateBuilder<T, B extends BlocBase<BaseState>> extends BlocBuilder<B, 
            builder: (context, state) {
             if (state is ViewState) {
               switch (state.status) {
-                case Status.ready:
+                case ViewStateStatus.ready:
                   return onReady?.call(context) ?? child;
-                case Status.loading:
+                case ViewStateStatus.loading:
                   return onLoading?.call(context, state.data) ?? child;
-                case Status.refreshing:
+                case ViewStateStatus.refreshing:
                   return onRefreshing?.call(context, state.data) ?? child;
-                case Status.success:
+                case ViewStateStatus.success:
                   return onSuccess?.call(context, state.data) ?? child;
-                case Status.empty:
+                case ViewStateStatus.empty:
                   return onEmpty?.call(context) ?? child;
-                case Status.error:
+                case ViewStateStatus.error:
                   return onError?.call(context, state.error) ?? child;
               }
             }

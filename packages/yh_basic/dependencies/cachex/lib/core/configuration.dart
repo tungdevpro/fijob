@@ -1,4 +1,4 @@
-const defaultDay = 7;
+import 'package:cachex/globals.dart';
 
 class Configuration {
   final String databaseName;
@@ -8,6 +8,6 @@ class Configuration {
   Configuration({
     this.databaseName = "cache-db",
     required this.baseUrl,
-    this.defaultMaxAge = const Duration(days: defaultDay),
+    this.defaultMaxAge = const Duration(days: Globals.defaultDurationDay),
   });
 }

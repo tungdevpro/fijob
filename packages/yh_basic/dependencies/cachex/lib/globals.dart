@@ -5,6 +5,7 @@ abstract class Globals {
   const Globals._();
 
   static const int currentVersionDatabase = 3;
+  static const int defaultDurationDay = 7;
 
   static const String tableName = "caches";
   static const String colKey = "key";

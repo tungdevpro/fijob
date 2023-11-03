@@ -1,5 +1,6 @@
 import 'package:cachex/cachex.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:yh_basic/yh_basic.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -30,7 +31,7 @@ class DioHelper implements LibraryInitializer {
 
   Future<ApiResponse<T>> get<T>(
     String url, {
-    Function? convertJson,
+    required ComputeCallback convertJson,
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
@@ -39,7 +40,8 @@ class DioHelper implements LibraryInitializer {
     final dio = getDio();
     try {
       final response = await dio.get(url, queryParameters: queryParameters, options: options, cancelToken: cancelToken, onReceiveProgress: onReceiveProgress);
-      return ApiResponse<T>.success((convertJson?.call(response.data) as T));
+      final apis = await compute(convertJson, response.data);
+      return ApiResponse<T>.success((apis));
     } catch (e) {
       return ApiResponse.error(message: e.toString());
     }

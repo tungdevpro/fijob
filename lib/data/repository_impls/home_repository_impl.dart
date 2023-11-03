@@ -13,7 +13,7 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Either<dynamic, ApiResponse<Post>>> getNewPost() async {
     try {
-      final response = await service.client.get<Post>('/todos/1', convertJson: Post.fromJson);
+      final response = await service.client.get<Post>('/todos/1', convertJson: (message) => Post.fromJson(message));
       return right<dynamic, ApiResponse<Post>>(response);
     } catch(e) {
       return left<dynamic, ApiResponse<Post>>(e);

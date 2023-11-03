@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/di/di.dart';
@@ -12,8 +15,13 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
   dynamic arguments;
   final navigator = getIt<AppNavigator>();
 
+  String? _originRoute;
+
+  String get originRoute => _originRoute ?? '';
+
   BaseBloc(S initState) : super(initState) {
     _isMounted = true;
+    checkNetworkConnection();
     listEvent();
     WidgetsBinding.instance.addObserver(this);
   }
@@ -47,6 +55,13 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
     }
   }
 
+  void checkNetworkConnection() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {}
+    } on SocketException catch (_) {}
+  }
+
   void listEvent();
 
   void onInActive() {}
@@ -61,6 +76,7 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
 
   void initialRouteSetting(RouteSettings? settings) {
     arguments = settings?.arguments;
+    _originRoute = settings?.name;
   }
 
   TypeArg convertArgumentToModel<TypeArg>(JsonCodec<TypeArg> cb) {

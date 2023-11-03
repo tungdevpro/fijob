@@ -14,8 +14,6 @@ class AppNavigator {
 
   void setContext(BuildContext context) => _context = context;
 
-  @protected
-  //should be modified ONLY by tests, debug page and setting it in MaterialApp
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: 'AppNavigator Key');
 
   static GlobalKey<NavigatorState>? nestedNavigatorKey;

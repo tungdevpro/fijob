@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-enum ViewStateStatus { ready, loading, refreshing, success, empty, error }
+enum ViewStateStatus { none, loading, refreshing, success, empty, error }
 
 abstract class BaseState extends Equatable {
   // const BaseState();
@@ -14,12 +14,12 @@ class ViewState<T> extends BaseState {
   final T? data;
   final dynamic error;
 
-  ViewState({this.status = ViewStateStatus.ready, this.data, this.error});
+  ViewState({this.status = ViewStateStatus.none, this.data, this.error});
 
   @override
   List get props => [status, data, error];
 
-  bool get isReady => status == ViewStateStatus.ready;
+  bool get isNone => status == ViewStateStatus.none;
 
   bool get isLoading => status == ViewStateStatus.loading;
 

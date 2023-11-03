@@ -8,7 +8,7 @@ class ViewStateBuilder<B extends BlocBase<BaseState>> extends BlocBuilder<B, Bas
   ViewStateBuilder({
     Key? key,
     B? bloc,
-    InitialBuilder? onReady,
+    InitialBuilder? onNone,
     LoadingBuilder? onLoading,
     SuccessBuilder? onSuccess,
     RefreshingBuilder? onRefreshing,
@@ -18,24 +18,35 @@ class ViewStateBuilder<B extends BlocBase<BaseState>> extends BlocBuilder<B, Bas
   }) : super(
           key: key,
           bloc: bloc,
-           builder: (context, state) {
+          builder: (context, state) {
             if (state is ViewState) {
-              switch (state.status) {
-                case ViewStateStatus.ready:
-                  return onReady?.call(context) ?? child;
-                case ViewStateStatus.loading:
-                  return onLoading?.call(context, state.data) ?? child;
-                case ViewStateStatus.refreshing:
-                  return onRefreshing?.call(context, state.data) ?? child;
-                case ViewStateStatus.success:
-                  return onSuccess?.call(context, state.data) ?? child;
-                case ViewStateStatus.empty:
-                  return onEmpty?.call(context) ?? child;
-                case ViewStateStatus.error:
-                  return onError?.call(context, state.error) ?? child;
-              }
+              return AnimatedSwitcher(
+                duration: const Duration(milliseconds: 500),
+                transitionBuilder: _buildTransition,
+                // child: state.status == ViewStateStatus.loading ? (onLoading?.call(context, state.data) ?? child) : (onSuccess?.call(context, state.data) ?? child),
+                child: Builder(
+                  builder: (context) {
+                    switch (state.status) {
+                      case ViewStateStatus.none:
+                        return onNone?.call(context) ?? child;
+                      case ViewStateStatus.loading:
+                        return onLoading?.call(context, state.data) ?? child;
+                      case ViewStateStatus.refreshing:
+                        return onRefreshing?.call(context, state.data) ?? child;
+                      case ViewStateStatus.success:
+                        return onSuccess?.call(context, state.data) ?? child;
+                      case ViewStateStatus.empty:
+                        return onEmpty?.call(context) ?? child;
+                      case ViewStateStatus.error:
+                        return onError?.call(context, state.error) ?? child;
+                    }
+                  },
+                ),
+              );
             }
             return child;
           },
         );
 }
+
+Widget _buildTransition(Widget child, Animation<double> animation) => FadeTransition(opacity: animation, child: child);

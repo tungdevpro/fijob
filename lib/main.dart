@@ -7,8 +7,10 @@ import 'package:fijob/presentation/shared/theme/theme_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:permission_lib/permission_lib.dart';
 import 'package:yh_basic/common/types.dart';
 import 'package:yh_basic/yh_basic.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   init(
@@ -30,6 +32,9 @@ void main() {
     ],
     asyncCallbacks: [
       // () => getIt<LocalStorageFactory>().createClient(boxName: "configs"),
+    ],
+    callInMyApps: [
+      () => PermissionLib.instance().requests([Permission.notification]),
     ],
   );
 }

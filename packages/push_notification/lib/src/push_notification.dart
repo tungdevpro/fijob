@@ -15,7 +15,7 @@ class PushNotification {
       null, //'resource://drawable/res_app_icon',//
       [
         NotificationChannel(
-          channelGroupKey: NotifyConstants.channelGroupKey,
+          // channelGroupKey: NotifyConstants.channelGroupKey,
           channelKey: NotifyConstants.channelKey,
           channelName: NotifyConstants.channelName,
           channelDescription: NotifyConstants.channelDescription,

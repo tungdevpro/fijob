@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 abstract class NotifyConstants {
   const NotifyConstants._();
 
+  static const int defaultId = 1;
   static const String channelKey = 'push_notify';
   static const String channelName = 'push_notify';
   static const String channelDescription = 'push_notify_description';

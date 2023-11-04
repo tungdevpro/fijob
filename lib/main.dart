@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_lib/permission_lib.dart';
+import 'package:push_notification/push_notification.dart';
 import 'package:yh_basic/common/types.dart';
 import 'package:yh_basic/yh_basic.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -31,7 +32,7 @@ void main() {
       () => configureDependencies(),
     ],
     asyncCallbacks: [
-      // () => getIt<LocalStorageFactory>().createClient(boxName: "configs"),
+      () => PushNotification.instance.initialize(),
     ],
     callInMyApps: [
       () => PermissionLib.instance().requests([Permission.notification]),

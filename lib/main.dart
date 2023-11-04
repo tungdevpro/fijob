@@ -32,7 +32,8 @@ void main() {
       () => configureDependencies(),
     ],
     asyncCallbacks: [
-      () => PushNotification.instance.initialize(),
+      () => PushNotification.instance.initializeLocalNotifications(),
+      () => PushNotification.instance.initializeNotificationsEventListeners(),
     ],
     callInMyApps: [
       () => PermissionLib.instance().requests([Permission.notification]),

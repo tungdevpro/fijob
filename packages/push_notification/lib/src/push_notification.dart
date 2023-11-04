@@ -10,7 +10,7 @@ class PushNotification {
 
   static PushNotification get instance => _instance;
 
-  Future<void> initialize() async {
+  Future<void> initializeLocalNotifications() async {
     await AwesomeNotifications().initialize(
       null, //'resource://drawable/res_app_icon',//
       [
@@ -32,6 +32,15 @@ class PushNotification {
     );
   }
 
+  Future<void> initializeNotificationsEventListeners() async {
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: onActionReceivedMethod,
+      onDismissActionReceivedMethod: onDismissActionReceivedMethod,
+      onNotificationCreatedMethod: onNotificationCreatedMethod,
+      onNotificationDisplayedMethod: onNotificationDisplayedMethod,
+    );
+  }
+
   Future<bool> requestPermission() async {
     bool? hasAllow = await AwesomeNotifications().isNotificationAllowed();
     if (hasAllow) return false;
@@ -39,5 +48,14 @@ class PushNotification {
   }
 
   Future<void> resetBadgeCounter() async => await AwesomeNotifications().resetGlobalBadge();
+
   Future<void> cancelNotifications() async => await AwesomeNotifications().cancelAll();
+
+  Future<void> onActionReceivedMethod(ReceivedAction receivedAction) async {}
+
+  Future<void> onDismissActionReceivedMethod(ReceivedAction receivedAction) async {}
+
+  Future<void> onNotificationCreatedMethod(ReceivedNotification receivedNotification) async {}
+
+  Future<void> onNotificationDisplayedMethod(ReceivedNotification receivedNotification) async {}
 }

@@ -14,7 +14,7 @@ class AppNavigator {
 
   void setContext(BuildContext context) => _context = context;
 
-  static GlobalKey<NavigatorState> navigatorKey = GlobalKey(debugLabel: 'AppNavigator Key');
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   static GlobalKey<NavigatorState>? nestedNavigatorKey;
 

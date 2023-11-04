@@ -49,8 +49,10 @@ dependencies:
 
   yh_basic:
     path: packages/yh_basic
-  fijob_ui_componts:
-    path: packages/fijob_ui_componts
+  permission_lib:
+    path: packages/permission_lib
+  push_notification:
+    path: packages/push_notification
 
 dev_dependencies:
   flutter_test:

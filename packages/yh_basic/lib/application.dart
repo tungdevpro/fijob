@@ -51,7 +51,6 @@ class _ApplicationState extends State<Application> {
     return BlocBuilder<AppCubit, AppInfo>(
       builder: (context, state) {
         return MaterialApp(
-          // ignore: invalid_use_of_protected_member
           navigatorKey: AppNavigator.navigatorKey,
           title: AppGlobal.I().site.title,
           debugShowCheckedModeBanner: false,

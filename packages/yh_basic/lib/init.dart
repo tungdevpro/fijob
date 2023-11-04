@@ -60,6 +60,8 @@ void init({
         onGenerateRoute: onGenerateRoute,
         startLocale: startLocale,
         supportedLocales: List<Locale>.from(supportedLocales),
+        callInMyApps: callInMyApps,
+        fallbackLocale: startLocale,
       ),
     ),
   );

@@ -1,7 +1,4 @@
 library permission_lib;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export './src/dialog.dart';
+export './src/permission_lib.dart';

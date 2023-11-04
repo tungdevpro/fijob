@@ -11,6 +11,7 @@ export './common/constants/network_constant.dart';
 export 'common/common.dart';
 export 'common/api_response.dart';
 export 'common/base_function.dart';
+export 'common/extensions/context.dart';
 
 // Network
 export './network/dio_client.dart';
@@ -26,3 +27,4 @@ export './utils/string.dart';
 
 // Shared
 export './shared/shared.dart';
+

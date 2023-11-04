@@ -86,20 +86,16 @@ class _Button extends StatelessWidget {
   final Color? color;
   final Color? titleColor;
   final Border? border;
-  final double? radius;
-  final double? width;
-  final EdgeInsets? padding;
 
-  const _Button({Key? key, required this.title, this.onTap, this.color, this.border, this.radius, this.width, this.padding, this.titleColor}) : super(key: key);
+  const _Button({Key? key, required this.title, this.onTap, this.color, this.border, this.titleColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: width,
         alignment: Alignment.center,
-        padding: padding ?? const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
           border: border ?? Border.all(color: Colors.black.withOpacity(.32)),

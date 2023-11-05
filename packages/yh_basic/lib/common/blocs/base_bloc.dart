@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:yh_basic/di/di.dart';
 import 'package:yh_basic/globals.dart';
 
@@ -55,11 +55,15 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
     }
   }
 
-  void checkNetworkConnection() async {
+  void checkNetworkConnection([Function? handler]) async {
     try {
       final result = await InternetAddress.lookup('google.com');
-      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {}
-    } on SocketException catch (_) {}
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        handler?.call();
+      }
+    } on SocketException catch (_) {
+
+    }
   }
 
   void listEvent();
@@ -82,4 +86,8 @@ abstract class BaseBloc<T extends BaseEvent, S extends BaseState> extends Bloc<T
   TypeArg convertArgumentToModel<TypeArg>(JsonCodec<TypeArg> cb) {
     return cb.fromJson(arguments);
   }
+
+  void showLoading() => EasyLoading.show();
+
+  void hideLoading() => EasyLoading.dismiss();
 }

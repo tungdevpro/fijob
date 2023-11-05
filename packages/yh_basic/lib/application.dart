@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:yh_basic/navigator/app_navigator.dart';
 import 'package:yh_basic/yh_basic.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -66,12 +68,9 @@ class _ApplicationState extends State<Application> {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: widget.supportedLocales ?? <Locale>[],
-          builder: (context, child) {
-            return MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-              child: child!,
-            );
-          },
+          builder: EasyLoading.init(
+            builder: (context, child) => MediaQuery(data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), child: child!),
+          ),
         );
       },
     );

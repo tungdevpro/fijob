@@ -1,6 +1,6 @@
 import 'package:fijob/commons/constants/app_dimens.dart';
 import 'package:fijob/commons/constants/color_constant.dart';
-import 'package:fijob/presentation/getting_started/blocs/getting_started_cubit.dart';
+import 'package:fijob/presentation/getting_started/bloc/getting_started_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

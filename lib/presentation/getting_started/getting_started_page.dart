@@ -1,6 +1,6 @@
 import 'package:fijob/commons/constants/app_dimens.dart';
 import 'package:fijob/commons/constants/app_typography.dart';
-import 'package:fijob/presentation/getting_started/blocs/getting_started_cubit.dart';
+import 'package:fijob/presentation/getting_started/bloc/getting_started_cubit.dart';
 import 'package:fijob/presentation/getting_started/components/dot_comp.dart';
 import 'package:fijob/presentation/shared/custom_button.dart';
 import 'package:flutter/material.dart';

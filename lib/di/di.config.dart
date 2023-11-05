@@ -21,8 +21,7 @@ import '../domain/usecases/home_get_new_job_usecase.dart' as _i15;
 import '../presentation/auth/bloc/auth_bloc.dart' as _i4;
 import '../presentation/auth/login/bloc/login_bloc.dart' as _i12;
 import '../presentation/auth/register/bloc/register_bloc.dart' as _i13;
-import '../presentation/getting_started/blocs/getting_started_cubit.dart'
-    as _i8;
+import '../presentation/getting_started/bloc/getting_started_cubit.dart' as _i8;
 import '../presentation/home/bloc/home_bloc.dart' as _i9;
 import '../presentation/splash/blocs/splash_cubit.dart' as _i14;
 

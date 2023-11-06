@@ -25,15 +25,16 @@ class BaseRefreshView extends StatelessWidget {
     this.physics,
     this.padding,
     this.scrollController,
-    this.separatorBuilder, this.enablePullDown = true,
+    this.separatorBuilder,
+    this.enablePullDown = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return SmartRefresher(
-      physics: const ClampingScrollPhysics(),
+      physics: physics ?? const ClampingScrollPhysics(),
       enablePullDown: enablePullDown,
-      enablePullUp: true,
+      enablePullUp: refresh.isEndpoint,
       header: const ClassicHeader(),
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
@@ -67,11 +68,12 @@ class BaseRefreshView extends StatelessWidget {
   }
 
   void _onRefresh() {
+    // refresh.onRefresh();
     onRefresh?.call();
-    refresh.controller.refreshCompleted();
   }
 
   void _onLoading() {
+    // refresh.onLoadMore();
     onLoading?.call();
   }
 }

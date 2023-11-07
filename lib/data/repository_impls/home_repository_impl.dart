@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:fijob/core/network/api_path.dart';
 import 'package:fijob/data/data_source/remote/api_client_service.dart';
 import 'package:fijob/domain/enities/post_entity.dart';
 import 'package:fijob/domain/repositories/home_repository.dart';
@@ -8,15 +9,17 @@ import 'package:yh_basic/common/api_response.dart';
 @LazySingleton(as: HomeRepository)
 class HomeRepositoryImpl implements HomeRepository {
   final ApiClientService service;
+
   HomeRepositoryImpl(this.service);
 
   @override
-  Future<Either<dynamic, ApiResponse<Post>>> getNewPost() async {
+  Future<Either<dynamic, ApiResponse<List<Post>>>> getNewPost(PostRequester? params) async {
     try {
-      final response = await service.client.get<Post>('/todos/1', convertJson: (message) => Post.fromJson(message));
-      return right<dynamic, ApiResponse<Post>>(response);
-    } catch(e) {
-      return left<dynamic, ApiResponse<Post>>(e);
+      final response = await service.client
+          .get<List<Post>>(ApiPath.listPost, queryParameters: params?.toJson(), convertJson: (message) => message.map((e) => Post.fromJson(e)).toList().cast<Post>());
+      return right<dynamic, ApiResponse<List<Post>>>(response);
+    } catch (e) {
+      return left<dynamic, ApiResponse<List<Post>>>(e);
     }
   }
 }

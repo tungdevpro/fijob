@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/shared/shared.dart';
 
+import 'bloc/home_event.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,7 +27,17 @@ class _HomePageState extends BaseStateView<HomePage, HomeBloc> {
           onLoading: (context, data) => const CircularProgressIndicator(),
           onError: (context, error) => Text('err: $error'),
           onSuccess: (context, data) {
-            return Text('data...$data');
+            return Text("data... $data");
+            return BaseRefreshView(
+              onRefresh: () => bloc.add(HomeRefreshPostEvent()),
+              refresh: bloc.refreshController,
+              itemCount: 10,
+              itemBuilder: (context, index) => Card(
+                child: ListTile(
+                  title: Text("data $index"),
+                ),
+              ),
+            );
           },
         ),
       ),

@@ -1,3 +1,17 @@
+class PostRequester {
+  int start;
+  int limit;
+
+  PostRequester({this.start = 0, this.limit = 5});
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_start'] = start;
+    data['_limit'] = limit;
+    return data;
+  }
+}
+
 class Post {
   int? albumId;
   int? id;

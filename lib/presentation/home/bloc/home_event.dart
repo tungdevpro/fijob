@@ -12,3 +12,8 @@ class HomeGetPostEvent extends HomeEvent {
   @override
   List<Object?> get props => [];
 }
+
+class HomeRefreshPostEvent extends HomeEvent {
+  @override
+  List<Object?> get props => [];
+}

@@ -22,6 +22,7 @@ void main() {
     supportedLocales: AppConstants.supportedLocales,
     loginOption: LoginOption.required,
     onGenerateRoute: Routes.generateRoutes,
+    translatePath: AppConstants.translatePath,
     providers: [
       BlocProvider(create: (_) => getIt<AuthBloc>()),
     ],

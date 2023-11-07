@@ -7,8 +7,9 @@ abstract class AppConstants {
   static const String title = "FiJob";
   static const String id = "iw90456";
   static const String domain = "https://jsonplaceholder.typicode.com/";
-  static const Locale startLocale = Locale("vi", "VN");
-  static const Iterable<Locale> supportedLocales = [startLocale, Locale('en', 'US')];
+  static const Locale startLocale = Locale("en");
+  static const Iterable<Locale> supportedLocales = [startLocale, Locale('vi')];
   static const int page = 0;
   static const int limit = 10;
+  static const String translatePath = 'assets/translations';
 }

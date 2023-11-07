@@ -1,10 +1,11 @@
 import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yh_basic/application.dart';
-import 'package:yh_basic/common/types.dart';
 import 'package:yh_basic/yh_basic.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:provider/single_child_widget.dart';
 
@@ -26,8 +27,10 @@ void init({
   required List<SingleChildWidget> providers,
   RouteFactory? onGenerateRoute,
   required String initialRoute,
+  String translatePath = 'assets/translations',
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   Bloc.observer = AppBlocObserver();
   HttpOverrides.global = MyHttpOverrides();
   configureDependencies();
@@ -46,22 +49,29 @@ void init({
     });
   }
 
+  final supLocales = List<Locale>.from(supportedLocales);
+
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => AppCubit(connectivityStream: Connectivity().onConnectivityChanged)..init()),
-        ...providers,
-      ],
-      child: Application(
-        initialRoute: initialRoute,
-        theme: theme,
-        themeMode: themeMode,
-        darkTheme: darkTheme,
-        onGenerateRoute: onGenerateRoute,
-        startLocale: startLocale,
-        supportedLocales: List<Locale>.from(supportedLocales),
-        callInMyApps: callInMyApps,
-        fallbackLocale: startLocale,
+    EasyLocalization(
+      path: translatePath,
+      startLocale: startLocale,
+      supportedLocales: supLocales,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => AppCubit(connectivityStream: Connectivity().onConnectivityChanged)..init()),
+          ...providers,
+        ],
+        child: Application(
+          initialRoute: initialRoute,
+          theme: theme,
+          themeMode: themeMode,
+          darkTheme: darkTheme,
+          onGenerateRoute: onGenerateRoute,
+          startLocale: startLocale,
+          supportedLocales: supLocales,
+          callInMyApps: callInMyApps,
+          fallbackLocale: startLocale,
+        ),
       ),
     ),
   );

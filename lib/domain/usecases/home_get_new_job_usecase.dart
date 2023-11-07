@@ -5,13 +5,13 @@ import 'package:injectable/injectable.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 @injectable
-class HomeGetNewJobUseCase extends UseCase<Either<dynamic, ApiResponse<List<Post>>>, PostRequester> {
+class HomeGetNewJobUseCase extends UseCase<Either<AppError, ApiResponse<List<Post>>>, PostRequester> {
   final HomeRepository repository;
 
   HomeGetNewJobUseCase(this.repository);
 
   @override
-  Future<Either<dynamic, ApiResponse<List<Post>>>> execute({PostRequester? params}) async {
+  Future<Either<AppError, ApiResponse<List<Post>>>> execute({PostRequester? params}) async {
     return await repository.getNewPost(params);
   }
 }

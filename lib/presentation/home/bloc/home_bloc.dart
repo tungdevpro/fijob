@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fijob/commons/constants/app_constant.dart';
 import 'package:fijob/di/di.dart';
 import 'package:fijob/domain/repositories/home_repository.dart';
 import 'package:fijob/domain/usecases/home_get_new_job_usecase.dart';
@@ -38,7 +39,7 @@ class HomeBloc extends BaseBloc<HomeEvent, ViewState<List<Post>>> implements Lib
 
   void _onGetPost(HomeGetPostEvent event, Emitter<ViewState<List<Post>>> emit) async {
     emit(state.copyWith(status: ViewStateStatus.loading));
-    final response = await HomeGetNewJobUseCase(homeRepo).execute(params: PostRequester(start: 0, limit: 3));
+    final response = await HomeGetNewJobUseCase(homeRepo).execute(params: PostRequester(start: AppConstants.page, limit: AppConstants.limit));
     response.fold((l) => emit(state.copyWith(status: ViewStateStatus.error)), (r) async {
       emit(state.copyWith(data: r.data, status: ViewStateStatus.success));
     });

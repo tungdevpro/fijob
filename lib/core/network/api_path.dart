@@ -4,5 +4,5 @@ import 'package:flutter/cupertino.dart';
 abstract class ApiPath {
   const ApiPath._();
 
-  static const String listPost = '/post';
+  static const String listPost = '/posts';
 }

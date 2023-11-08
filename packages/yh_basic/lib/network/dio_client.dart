@@ -12,11 +12,11 @@ class DioHelper implements LibraryInitializer {
   }
 
   @override
-  Future<void> init({List<InterceptorsWrapper>? interceptors, bool hasLog = true}) async {
+  Future<void> init({List<InterceptorsWrapper>? interceptors, bool hasLog = true, String? baseUrl}) async {
     _dio = Dio();
 
     _dio.options = BaseOptions(
-      baseUrl: AppGlobal.I().site.domain,
+      baseUrl: baseUrl ?? AppGlobal.I().site.domain,
       contentType: NetworkConstants.contentType,
       sendTimeout: DioConstants.timeout,
       connectTimeout: DioConstants.timeout,

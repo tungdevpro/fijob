@@ -13,17 +13,18 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import '../core/network/dio_client_factory.dart' as _i7;
 import '../data/data_source/remote/api_client_service.dart' as _i3;
+import '../data/data_source/remote/placeholder_client_service.dart' as _i13;
 import '../data/repository_impls/auth_repository_impl.dart' as _i6;
 import '../data/repository_impls/home_repository_impl.dart' as _i11;
 import '../domain/domain.dart' as _i5;
 import '../domain/repositories/home_repository.dart' as _i10;
-import '../domain/usecases/home_get_new_job_usecase.dart' as _i15;
+import '../domain/usecases/home_get_new_job_usecase.dart' as _i16;
 import '../presentation/auth/bloc/auth_bloc.dart' as _i4;
 import '../presentation/auth/login/bloc/login_bloc.dart' as _i12;
-import '../presentation/auth/register/bloc/register_bloc.dart' as _i13;
+import '../presentation/auth/register/bloc/register_bloc.dart' as _i14;
 import '../presentation/getting_started/bloc/getting_started_cubit.dart' as _i8;
 import '../presentation/home/bloc/home_bloc.dart' as _i9;
-import '../presentation/splash/blocs/splash_cubit.dart' as _i14;
+import '../presentation/splash/blocs/splash_cubit.dart' as _i15;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt initGetIt(
@@ -46,9 +47,11 @@ _i1.GetIt initGetIt(
   gh.lazySingleton<_i10.HomeRepository>(
       () => _i11.HomeRepositoryImpl(gh<_i3.ApiClientService>()));
   gh.factory<_i12.LoginBloc>(() => _i12.LoginBloc());
-  gh.factory<_i13.RegisterBloc>(() => _i13.RegisterBloc());
-  gh.factory<_i14.SplashCubit>(() => _i14.SplashCubit());
-  gh.factory<_i15.HomeGetNewJobUseCase>(
-      () => _i15.HomeGetNewJobUseCase(gh<_i10.HomeRepository>()));
+  gh.lazySingleton<_i13.PlaceholderClientService>(
+      () => _i13.PlaceholderClientService());
+  gh.factory<_i14.RegisterBloc>(() => _i14.RegisterBloc());
+  gh.factory<_i15.SplashCubit>(() => _i15.SplashCubit());
+  gh.factory<_i16.HomeGetNewJobUseCase>(
+      () => _i16.HomeGetNewJobUseCase(gh<_i10.HomeRepository>()));
   return getIt;
 }

@@ -12,4 +12,5 @@ abstract class AppConstants {
   static const int page = 0;
   static const int limit = 10;
   static const String translatePath = 'assets/translations';
+  static const String apiPlaceholder = "https://jsonplaceholder.typicode.com/";
 }

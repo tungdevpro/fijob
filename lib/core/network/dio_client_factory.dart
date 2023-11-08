@@ -3,8 +3,8 @@ import 'package:yh_basic/yh_basic.dart';
 
 @lazySingleton
 class DioClientFactory {
-  DioHelper createClient() {
-    var client = DioHelper()..init();
+  DioHelper createClient([String? baseUrl]) {
+    var client = DioHelper()..init(baseUrl: baseUrl);
     return client;
   }
 }

@@ -1,4 +1,4 @@
-package com.yh.fijob.fijob
+package com.yh.fijob
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "623372681577",
+    "project_id": "fijob-9abb4",
+    "storage_bucket": "fijob-9abb4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623372681577:android:be0ce43625f7b3a909bdf8",
+        "android_client_info": {
+          "package_name": "com.yh.fijob"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsd00KW6TtYmgisX0Huw1vC_CfSkXZcEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

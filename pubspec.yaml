@@ -53,6 +53,8 @@ dependencies:
     path: packages/permission_lib
   push_notification:
     path: packages/push_notification
+  firebase_manager:
+    path: packages/firebase_manager
 
 dev_dependencies:
   flutter_test:

@@ -20,7 +20,7 @@ class PermissionLib {
         result = false;
       }
     }).then((value) {
-        if (requestTitle.isNotEmpty) {
+        if (requestTitle.isNotEmpty && AppNavigator.navigatorKey.currentState != null) {
           showDialog(
               context: AppNavigator.navigatorKey.currentState!.context,
               barrierColor: Colors.transparent,

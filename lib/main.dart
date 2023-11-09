@@ -4,6 +4,7 @@ import 'package:fijob/core/navigator/routes.dart';
 import 'package:fijob/di/di.dart';
 import 'package:fijob/presentation/auth/bloc/auth_bloc.dart';
 import 'package:fijob/presentation/shared/theme/theme_manager.dart';
+import 'package:firebase_manager/firebase_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,6 +35,7 @@ void main() {
     asyncCallbacks: [
       () => PushNotification.instance.initializeLocalNotifications(),
       () => PushNotification.instance.initializeNotificationsEventListeners(),
+      () => FirebaseModule().initialize(),
     ],
     callInMyApps: [
       () => PermissionLib.instance().requests([Permission.notification]),

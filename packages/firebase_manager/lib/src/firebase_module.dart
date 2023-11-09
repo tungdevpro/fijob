@@ -6,9 +6,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 typedef OnInitialMsg = Function(RemoteMessage message);
 
 class FirebaseModule {
-  static FirebaseModule? _instance;
+  FirebaseModule._internal();
 
-  factory FirebaseModule() => _instance ??= FirebaseModule();
+  factory FirebaseModule() {
+    return _instance;
+  }
+
+  static final FirebaseModule _instance = FirebaseModule._internal();
 
   Future<void> initialize() async {
     await Firebase.initializeApp();
@@ -32,5 +36,5 @@ class FirebaseModule {
 
   void initialMessage({OnInitialMsg? onInitialMsg}) {
     FirebaseMessaging.instance.getInitialMessage().then((RemoteMessage? message) {});
-    }
+  }
 }

@@ -40,11 +40,7 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   @override
   void initState() {
-    if (widget.callInMyApps?.isNotEmpty ?? false) {
-      for (var element in widget.callInMyApps!) {
-        element.call();
-      }
-    }
+    WidgetsBinding.instance.addPostFrameCallback(_onAddPostFrameCallback);
     super.initState();
   }
 
@@ -70,5 +66,13 @@ class _ApplicationState extends State<Application> {
         );
       },
     );
+  }
+
+  void _onAddPostFrameCallback(Duration timeStamp) {
+    if (widget.callInMyApps?.isNotEmpty ?? false) {
+      for (var element in widget.callInMyApps!) {
+        element.call();
+      }
+    }
   }
 }

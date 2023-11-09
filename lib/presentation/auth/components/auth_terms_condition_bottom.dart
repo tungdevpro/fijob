@@ -12,9 +12,10 @@ class AuthTermsConditionBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      padding: const EdgeInsets.symmetric(horizontal: AppDimension.maxPadding + 18).copyWith(bottom: AppDimension.paddingSM),
-      alignment: Alignment.center,
+      height: 75,
+      color: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: AppDimension.maxPadding + 18).copyWith(top: 10),
+      // alignment: Alignment.center,
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(

@@ -3,6 +3,7 @@ import 'package:fijob/commons/constants/asset/icon_resource.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yh_basic/yh_basic.dart';
 
 class AppHeader extends StatelessWidget implements PreferredSizeWidget {
   AppHeader({
@@ -87,10 +88,10 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
       bottomOpacity: bottomOpacity,
       leadingWidth: leadingWidth,
       systemOverlayStyle: systemOverlayStyle,
-      leading: leadingIcon == LeadingIcon.hambuger || leadingIcon == LeadingIcon.none
+      leading: leadingIcon == LeadingIcon.none
           ? null
           : IconButton(
-              onPressed: onLeadingPressed ?? () => Navigator.of(context).pop(),
+              onPressed: onLeadingPressed ?? () => _onPop(context),
               icon: Container(
                 padding: const EdgeInsets.only(left: AppDimension.padding),
                 child: SvgPicture.asset(leadingIcon == LeadingIcon.close ? IconResource.icX : IconResource.icArrowLeft, fit: BoxFit.scaleDown),
@@ -110,12 +111,16 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
       elevation: elevation,
     );
   }
+
+  void _onPop(BuildContext context) {
+    context.hideKeyboard();
+    Future.delayed(const ShortDuration(), () => Navigator.of(context).pop());
+  }
 }
 
 enum LeadingIcon {
   back,
   close,
-  hambuger,
   none,
 }
 

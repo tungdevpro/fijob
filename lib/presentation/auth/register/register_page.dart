@@ -32,7 +32,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
   RegisterBloc get initBloc => RegisterBloc.to;
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildChild() {
     return BlocProvider.value(
       value: bloc,
       child: Scaffold(
@@ -154,9 +154,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
     );
   }
 
-  Widget _buildLabel(String text) {
-    return Center(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: AppTypography.maxLargeFs)));
-  }
+  Widget _buildLabel(String text) => Center(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: AppTypography.maxLargeFs)));
 
   void _onGoToLogin() => bloc.navigator.pushNamed(RoutePath.home);
 }

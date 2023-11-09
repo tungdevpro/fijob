@@ -5,9 +5,7 @@ import '../../domain/entities/local_storage_failure.dart';
 import '../../utils/either_extensions.dart';
 
 class HiveClientPrimitive<K, V> {
-  const HiveClientPrimitive({
-    required this.boxName,
-  });
+  const HiveClientPrimitive({required this.boxName});
 
   final String boxName;
 

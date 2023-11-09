@@ -13,7 +13,6 @@ import 'getting_started_constants.dart';
 class GettingStartedPage extends StatefulWidget {
   const GettingStartedPage({super.key});
 
-
   @override
   State<GettingStartedPage> createState() => _GettingStartedPageState();
 }
@@ -46,10 +45,7 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
                       child: AnimatedSwitcher(
                         duration: const ShortDuration(),
                         transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
-                        child: Image.asset(
-                          _cubit.resource[state - 1].asset,
-                          key: ValueKey<String>(_cubit.resource[state - 1].asset),
-                        ),
+                        child: Image.asset(_cubit.resource[state - 1].asset, key: ValueKey<String>(_cubit.resource[state - 1].asset)),
                       ),
                     );
                   },

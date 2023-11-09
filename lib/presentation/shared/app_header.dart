@@ -113,8 +113,10 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
   }
 
   void _onPop(BuildContext context) {
-    context.hideKeyboard();
-    Future.delayed(const ShortDuration(), () => Navigator.of(context).pop());
+    final isKeyboardVisible = MediaQuery.of(context).viewInsets.bottom.toInt() > 0;
+
+    if (isKeyboardVisible) context.hideKeyboard();
+    Future.delayed(isKeyboardVisible ? const ShortDuration() : Duration.zero, () => Navigator.of(context).pop());
   }
 }
 

@@ -1,6 +1,9 @@
+import 'package:fijob/di/di.dart';
 import 'package:fijob/presentation/getting_started/getting_started_page.dart';
+import 'package:fijob/presentation/splash/bloc/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yh_basic/navigator/app_navigator.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 import '../../../commons/constants/asset/image_resource.dart';
@@ -14,8 +17,13 @@ class SplashContent extends StatefulWidget {
 }
 
 class _SplashContentState extends State<SplashContent> {
+  final appNavigator = getIt<AppNavigator>();
+
   @override
   void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      appNavigator.setContext(context);
+    });
     super.initState();
   }
 

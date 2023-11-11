@@ -19,15 +19,16 @@ import '../data/data_source/remote/api_client_service.dart' as _i3;
 import '../data/data_source/remote/placeholder_client_service.dart' as _i15;
 import '../data/repository_impls/auth_repository_impl.dart' as _i6;
 import '../data/repository_impls/home_repository_impl.dart' as _i11;
+import '../data/repository_impls/splash_repository_impl.dart' as _i18;
 import '../domain/domain.dart' as _i5;
 import '../domain/repositories/home_repository.dart' as _i10;
-import '../domain/usecases/home_get_new_job_usecase.dart' as _i18;
+import '../domain/usecases/home_get_new_job_usecase.dart' as _i19;
 import '../presentation/auth/bloc/auth_bloc.dart' as _i4;
 import '../presentation/auth/login/bloc/login_bloc.dart' as _i14;
 import '../presentation/auth/register/bloc/register_bloc.dart' as _i16;
 import '../presentation/getting_started/bloc/getting_started_cubit.dart' as _i8;
 import '../presentation/home/bloc/home_bloc.dart' as _i9;
-import '../presentation/splash/blocs/splash_cubit.dart' as _i17;
+import '../presentation/splash/bloc/splash_bloc.dart' as _i17;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt initGetIt(
@@ -55,8 +56,10 @@ _i1.GetIt initGetIt(
   gh.lazySingleton<_i15.PlaceholderClientService>(
       () => _i15.PlaceholderClientService());
   gh.factory<_i16.RegisterBloc>(() => _i16.RegisterBloc());
-  gh.factory<_i17.SplashCubit>(() => _i17.SplashCubit());
-  gh.factory<_i18.HomeGetNewJobUseCase>(
-      () => _i18.HomeGetNewJobUseCase(gh<_i10.HomeRepository>()));
+  gh.factory<_i17.SplashBloc>(() => _i17.SplashBloc());
+  gh.factory<_i18.SplashRepositoryImpl>(
+      () => _i18.SplashRepositoryImpl(gh<_i13.HiveClientPrimitiveFactory>()));
+  gh.factory<_i19.HomeGetNewJobUseCase>(
+      () => _i19.HomeGetNewJobUseCase(gh<_i10.HomeRepository>()));
   return getIt;
 }

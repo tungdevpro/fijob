@@ -265,7 +265,7 @@ packages:
     source: hosted
     version: "5.3.3"
   easy_localization:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: easy_localization
       sha256: de63e3b422adfc97f256cbb3f8cf12739b6a4993d390f3cadb3f51837afaefe5

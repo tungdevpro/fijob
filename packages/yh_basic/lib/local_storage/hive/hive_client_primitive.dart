@@ -9,9 +9,7 @@ class HiveClientPrimitive<K, V> {
 
   final String boxName;
 
-  Future<Box<V>> get _box => Hive.isBoxOpen(boxName) //
-      ? Future.value(Hive.box(boxName))
-      : Hive.openBox(boxName);
+  Future<Box<V>> get _box => Hive.isBoxOpen(boxName) ? Future.value(Hive.box(boxName)) : Hive.openBox(boxName);
 
   Future<Either<LocalStorageFailure, Unit>> save(K key, V? value) async {
     try {

@@ -6,4 +6,7 @@ abstract class LangKeys {
 
   static const String loginLabel = 'login_label';
   static const String registerLabel = 'register_label';
+
+  // message error
+  static const String errorCommon = 'error_common';
 }

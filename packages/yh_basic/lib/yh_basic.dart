@@ -28,3 +28,7 @@ export './utils/string.dart';
 // Shared
 export './shared/shared.dart';
 
+// local storage
+export './local_storage/hive/hive_initializer.dart';
+export './local_storage/hive/hive_path_provider.dart';
+

@@ -1,9 +1,19 @@
+import 'package:fijob/domain/repositories/splash_repository.dart';
+import 'package:injectable/injectable.dart';
 import 'package:yh_basic/yh_basic.dart';
 
-class CheckGettingStartedUseCase extends UseCase<bool, NoParams?> {
+@injectable
+class CheckGettingStartedUseCase extends UseCase<bool, String?> {
+  final SplashRepository repository;
+
+  CheckGettingStartedUseCase(this.repository);
 
   @override
-  Future<bool> execute({NoParams? params}) {
-    throw UnimplementedError();
+  Future<bool> execute({String? params}) async {
+    final result = await repository.getIsSkipGettingStarted(params ?? '');
+    if (result.isRight()) {
+      return false;
+    }
+    return true;
   }
 }

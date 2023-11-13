@@ -31,6 +31,7 @@ void main() {
       () => SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light)),
       () => SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]),
       () => configureDependencies(),
+      () => HiveInitializer().init(),
     ],
     asyncCallbacks: [
       () => PushNotification.instance.initializeLocalNotifications(),

@@ -1,9 +1,7 @@
-import 'package:fijob/di/di.dart';
 import 'package:fijob/presentation/getting_started/getting_started_page.dart';
 import 'package:fijob/presentation/splash/bloc/splash_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yh_basic/navigator/app_navigator.dart';
 import 'package:yh_basic/yh_basic.dart';
 
 import '../../../commons/constants/asset/image_resource.dart';
@@ -16,19 +14,14 @@ class SplashContent extends StatefulWidget {
   State<SplashContent> createState() => _SplashContentState();
 }
 
-class _SplashContentState extends State<SplashContent> {
-  final appNavigator = getIt<AppNavigator>();
+class _SplashContentState extends BaseStateView<SplashContent, SplashBloc> {
 
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      appNavigator.setContext(context);
-    });
-    super.initState();
-  }
+  SplashBloc get initBloc => SplashBloc.to;
+
 
   @override
-  Widget build(BuildContext context) {
+  Widget buildChild() {
     return Scaffold(
       backgroundColor: ColorConstants.primary,
       body: SafeArea(

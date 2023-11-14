@@ -34,6 +34,10 @@ class AppNavigator {
     return _navigator(_context, useRoot: useRoot).pushReplacement(route);
   }
 
+  Future<R?> pushNamedAndRemoveUntil<R>(String routeName, {R? arguments, bool useRoot = false}) async {
+    return _navigator(_context, useRoot: useRoot).pushNamedAndRemoveUntil(routeName, (route) => false, arguments: arguments);
+  }
+
   Future<R?> pushAndRemoveUntilRoot<R>(Route<R> route, {bool useRoot = false}) async {
     return _navigator(_context, useRoot: useRoot).pushAndRemoveUntil(route, (route) => false);
   }
@@ -85,7 +89,8 @@ Route<T> fadeInRoute<T>(
     );
 
 Route<T> displayModalRoute<T>(Widget page, {int? durationMillis, bool dismissible = true, String? pageName, Color? bgColor}) =>
-    fadeInRoute(BlurBackgroundViewer(page: page, isDismissible: dismissible, bgColor: bgColor), durationMillis: durationMillis, opaque: false, fullScreenDialog: true);
+    fadeInRoute(BlurBackgroundViewer(page: page, isDismissible: dismissible, bgColor: bgColor),
+        durationMillis: durationMillis, opaque: false, fullScreenDialog: true);
 
 Route<T> slideBottomRoute<T>(
   Widget page, {
@@ -94,7 +99,12 @@ Route<T> slideBottomRoute<T>(
   String? pageName,
   bool opaque = true,
 }) =>
-    _transitionRoute(page, durationMillis: durationMillis, fullScreenDialog: fullScreenDialog, pageName: pageName, opaque: opaque, transitionsBuilder: slideBottomPageTransition());
+    _transitionRoute(page,
+        durationMillis: durationMillis,
+        fullScreenDialog: fullScreenDialog,
+        pageName: pageName,
+        opaque: opaque,
+        transitionsBuilder: slideBottomPageTransition());
 
 Route<T> _transitionRoute<T>(Widget page,
         {int? durationMillis, bool fullScreenDialog = false, String? pageName, bool opaque = true, required RouteTransitionsBuilder transitionsBuilder}) =>

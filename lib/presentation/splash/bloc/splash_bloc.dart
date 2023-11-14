@@ -1,3 +1,4 @@
+import 'package:fijob/core/navigator/route_path.dart';
 import 'package:fijob/data/repository_impls/splash_repository_impl.dart';
 import 'package:fijob/di/di.dart';
 import 'package:fijob/domain/repositories/splash_repository.dart';
@@ -24,7 +25,10 @@ class SplashBloc extends BaseBloc<SplashEvent, SplashState> {
   }
 
   void _onGetIsSkipGettingStartedEvent(GetIsSkipGettingStartedEvent event, Emitter<SplashState> emit) async {
-    final result = await CheckGettingStartedUseCase(repo).execute(params: StorageKey.gettingStarted);
-    print('result--------- $result');
+    final isSkip = await CheckGettingStartedUseCase(repo).execute(params: StorageKey.gettingStarted);
+    if (!isSkip) {
+      navigator.pushNamedAndRemoveUntil(RoutePath.register);
+      return;
+    }
   }
 }

@@ -15,10 +15,8 @@ class SplashContent extends StatefulWidget {
 }
 
 class _SplashContentState extends BaseStateView<SplashContent, SplashBloc> {
-
   @override
   SplashBloc get initBloc => SplashBloc.to;
-
 
   @override
   Widget buildChild() {

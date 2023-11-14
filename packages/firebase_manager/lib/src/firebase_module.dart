@@ -16,7 +16,9 @@ class FirebaseModule {
 
   Future<void> initialize() async {
     await Firebase.initializeApp();
+  }
 
+  Future<void> requestPermission() async {
     await FirebaseMessaging.instance.requestPermission(alert: true, sound: true, criticalAlert: true);
     await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, sound: true, badge: true);
   }

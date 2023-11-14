@@ -1,1 +1,17 @@
-{}
+{
+  "login_label": "Đăng nhập",
+  "register_label": "Đăng ký",
+  "register_label_2": "Tạo tài khoản",
+  "google_label": "Đăng nhập với Google",
+  "apple_label": "Đăng nhập với Apple",
+  "email": "Email",
+  "email_placeholder": "Nhập địa chỉ email",
+  "btn_email": "Tiếp tục với email",
+  "has_account": "Đã có tài khoản",
+  "complete_label": "Hoàn thành tạo tài khoản",
+  "fullname": "Họ tên",
+  "fullname_placeholder": "Nhập họ tên",
+  "password": "Mật khẩu",
+  "password_placeholder": "Nhập mật khẩu",
+  "error_common": "Có lỗi xảy ra"
+}

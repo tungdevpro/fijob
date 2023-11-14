@@ -1,1 +1,17 @@
-{}
+{
+  "login_label": "Login",
+  "register_label": "Register",
+  "register_label_2": "Create account",
+  "google_label": "Create account",
+  "apple_label": "Create account",
+  "email": "Create account",
+  "email_placeholder": "Create account",
+  "btn_email": "Create account",
+  "has_account": "Create account",
+  "complete_label": "Create account",
+  "fullname": "Create account",
+  "fullname_placeholder": "Create account",
+  "password": "Create account",
+  "password_placeholder": "Create account",
+  "error_common": "An error occurred"
+}

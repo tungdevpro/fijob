@@ -14,11 +14,25 @@ class SplashRepositoryImpl implements SplashRepository {
 
   static const String _box = AppConstants.defaultBox;
 
-  HiveClientPrimitive<String, bool> get hiveClient => hiveClientPrimitiveFactory.createClient(boxName: _box);
+  HiveClientPrimitive<String, int> get hiveClient => hiveClientPrimitiveFactory.createClient(boxName: _box);
 
   @override
   Future<Either<GetIsSkipGettingStartedFailure, bool>> getIsSkipGettingStarted(String key) async {
-    final result = await hiveClient.read(key);
-    return result.fold((l) => Left(GetIsSkipGettingStartedFailure(l.msg)), (r) => Right(r ?? false));
+    try {
+      final result = await hiveClient.read(key);
+      return result.fold((l) => Left(GetIsSkipGettingStartedFailure(l.msg)), (r) => Right(r != null ? (r == 1) : false));
+    } catch (e) {
+      print('e..........$e');
+      return left(GetIsSkipGettingStartedFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<void> confirmSkipGettingStarted(String key) async {
+    try {
+      await hiveClient.save(key, 1);
+    } catch (e) {
+      print('eror........... $e');
+    }
   }
 }

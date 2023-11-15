@@ -11,9 +11,6 @@ class CheckGettingStartedUseCase extends UseCase<bool, String?> {
   @override
   Future<bool> execute({String? params}) async {
     final result = await repository.getIsSkipGettingStarted(params ?? '');
-    if (result.isRight()) {
-      return false;
-    }
-    return true;
+    return result.fold((l) => false, (r) => r);
   }
 }

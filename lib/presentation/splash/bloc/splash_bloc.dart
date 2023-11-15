@@ -27,8 +27,9 @@ class SplashBloc extends BaseBloc<SplashEvent, SplashState> {
   void _onGetIsSkipGettingStartedEvent(GetIsSkipGettingStartedEvent event, Emitter<SplashState> emit) async {
     final isSkip = await CheckGettingStartedUseCase(repo).execute(params: StorageKey.gettingStarted);
     if (!isSkip) {
-      navigator.pushNamedAndRemoveUntil(RoutePath.register);
+      navigator.pushNamedAndRemoveUntil(RoutePath.gettingStarted);
       return;
     }
+    navigator.pushNamedAndRemoveUntil(RoutePath.register);
   }
 }

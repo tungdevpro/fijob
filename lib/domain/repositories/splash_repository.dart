@@ -4,4 +4,5 @@ import '../enities/get_is_skip_getting_started.dart';
 
 abstract class SplashRepository {
   Future<Either<GetIsSkipGettingStartedFailure, bool>> getIsSkipGettingStarted(String key);
+  Future<void> confirmSkipGettingStarted(String key);
 }

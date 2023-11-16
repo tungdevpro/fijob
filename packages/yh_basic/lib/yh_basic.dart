@@ -9,7 +9,7 @@ export './common/constants/network_constant.dart';
 
 // Core
 export 'common/common.dart';
-export 'common/api_response.dart';
+export 'network/response/api_response.dart';
 export 'common/base_function.dart';
 export 'common/extensions/context.dart';
 

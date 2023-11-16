@@ -1,7 +1,6 @@
-
 import 'package:equatable/equatable.dart';
 
-import 'constants/network_constant.dart';
+import '../../common/constants/network_constant.dart';
 
 class ApiResponse<T> extends Equatable {
   final int? code;

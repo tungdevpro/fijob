@@ -14,7 +14,7 @@ export 'common/base_function.dart';
 export 'common/extensions/context.dart';
 
 // Network
-export './network/dio_client.dart';
+export 'network/apis/dio_client.dart';
 
 // Utils
 export './utils/bloc_extension.dart';
@@ -31,4 +31,3 @@ export './shared/shared.dart';
 // local storage
 export './local_storage/hive/hive_initializer.dart';
 export './local_storage/hive/hive_path_provider.dart';
-

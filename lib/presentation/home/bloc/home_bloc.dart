@@ -17,7 +17,9 @@ import '../../../domain/enities/post_entity.dart';
 class HomeBloc extends BaseBloc<HomeEvent, ViewState<List<Post>>> implements LibraryInitializer {
   HomeBloc() : super(ViewState<List<Post>>(data: null));
 
-  static HomeBloc get to => getIt<HomeBloc>()..init()..add(HomeGetPostEvent());
+  static HomeBloc get to => getIt<HomeBloc>()
+    ..init()
+    ..add(HomeGetPostEvent());
 
   final homeRepo = getIt<HomeRepository>();
   late BaseRefreshController refreshController;
@@ -39,7 +41,7 @@ class HomeBloc extends BaseBloc<HomeEvent, ViewState<List<Post>>> implements Lib
 
   void _onGetPost(HomeGetPostEvent event, Emitter<ViewState<List<Post>>> emit) async {
     emit(state.copyWith(status: ViewStateStatus.loading));
-    final response = await HomeGetNewJobUseCase(homeRepo).execute(params: PostRequester(start: AppConstants.page, limit: AppConstants.limit));
+    final response = await HomeGetNewJobUseCase(homeRepo).execute(params: PostRequester(start: AppConstants.page, limit: 3));
     response.fold((l) => emit(state.copyWith(status: ViewStateStatus.error)), (r) async {
       emit(state.copyWith(data: r.data, status: ViewStateStatus.success));
     });

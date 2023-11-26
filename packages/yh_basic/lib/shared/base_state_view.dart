@@ -26,7 +26,7 @@ abstract class BaseStateView<P extends StatefulWidget, T extends BaseBloc<BaseEv
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _onTap,
+      onTap: _unfocus,
       child: buildChild(),
     );
   }
@@ -40,7 +40,7 @@ abstract class BaseStateView<P extends StatefulWidget, T extends BaseBloc<BaseEv
     super.dispose();
   }
 
-  void _onTap() {
+  void _unfocus() {
     context.hideKeyboard();
   }
 }

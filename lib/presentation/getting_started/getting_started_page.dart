@@ -33,88 +33,88 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
       child: Scaffold(
         backgroundColor: ColorConstants.primary,
         body: SafeArea(
-          child: Padding(
+          child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: AppDimension.paddingXXL),
-            child: ListView(
-              physics: const ClampingScrollPhysics(),
-              children: [
-                BlocBuilder<GettingStartedCubit, int>(
-                  builder: (context, state) {
-                    return AspectRatio(
-                      aspectRatio: .8,
-                      child: AnimatedSwitcher(
-                        duration: const ShortDuration(),
-                        transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
-                        child: Image.asset(_cubit.resource[state - 1].asset, key: ValueKey<String>(_cubit.resource[state - 1].asset)),
-                      ),
-                    );
-                  },
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(AppDimension.paddingXXL),
-                  decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(AppDimension.radiusLG)),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      BlocBuilder<GettingStartedCubit, int>(
-                        builder: (context, state) {
-                          return Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              AnimatedSwitcher(
-                                duration: const MediumDuration(),
-                                transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
-                                child: RichText(
-                                  key: ValueKey<List<String>>(_cubit.resource[state - 1].title),
-                                  textAlign: TextAlign.center,
-                                  text: TextSpan(
-                                    style: const TextStyle(color: ColorConstants.gray100, fontSize: AppTypography.maxLargeFs, fontWeight: FontWeight.w700),
-                                    children: [
-                                      TextSpan(text: _cubit.resource[state - 1].title.first),
-                                      TextSpan(text: " ${_cubit.resource[state - 1].title.last}", style: const TextStyle(color: ColorConstants.primary)),
-                                    ],
-                                  ),
+            physics: const ClampingScrollPhysics(),
+            children: [
+              BlocBuilder<GettingStartedCubit, int>(
+                builder: (context, state) {
+                  return AspectRatio(
+                    aspectRatio: .97,
+                    child: AnimatedSwitcher(
+                      duration: const ShortDuration(),
+                      transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
+                      child: Image.asset(_cubit.resource[state - 1].asset, key: ValueKey<String>(_cubit.resource[state - 1].asset)),
+                    ),
+                  );
+                },
+              ),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(AppDimension.paddingXXL),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(AppDimension.radiusLG)),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BlocBuilder<GettingStartedCubit, int>(
+                      builder: (context, state) {
+                        return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            AnimatedSwitcher(
+                              duration: const MediumDuration(),
+                              transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
+                              child: RichText(
+                                key: ValueKey<List<String>>(_cubit.resource[state - 1].title),
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: const TextStyle(
+                                      color: ColorConstants.gray100, fontSize: AppTypography.maxLargeFs, fontWeight: FontWeight.w700),
+                                  children: [
+                                    TextSpan(text: _cubit.resource[state - 1].title.first),
+                                    TextSpan(
+                                        text: " ${_cubit.resource[state - 1].title.last}",
+                                        style: const TextStyle(color: ColorConstants.primary)),
+                                  ],
                                 ),
                               ),
-                              const SizedBox(height: 8),
-                              AnimatedSwitcher(
-                                duration: const ShortDuration(),
-                                transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
-                                child: Text(_cubit.resource[state - 1].content,
-                                    key: ValueKey<String>(_cubit.resource[state - 1].content),
-                                    style: const TextStyle(color: ColorConstants.gray60, height: 1.5, fontWeight: FontWeight.w600),
-                                    textAlign: TextAlign.center),
-                              ),
-                            ],
+                            ),
+                            const SizedBox(height: 8),
+                            AnimatedSwitcher(
+                              duration: const ShortDuration(),
+                              transitionBuilder: (child, animation) => FadeTransition(opacity: animation, child: child),
+                              child: Text(_cubit.resource[state - 1].content,
+                                  key: ValueKey<String>(_cubit.resource[state - 1].content),
+                                  style: const TextStyle(color: ColorConstants.gray60, height: 1.5, fontWeight: FontWeight.w600),
+                                  textAlign: TextAlign.center),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    const SizedBox(height: AppDimension.paddingXXL),
+                    const DotComp(),
+                    const SizedBox(height: AppDimension.paddingXXL),
+                    CustomButton(
+                      onTap: () => _cubit.nextStep(),
+                      title: BlocBuilder<GettingStartedCubit, int>(
+                        builder: (context, state) {
+                          return Text(
+                            state == _cubit.totalStep ? GettingStartedConstants.btnEnd : GettingStartedConstants.btnNext,
+                            style: const TextStyle(fontSize: AppTypography.largeFs, fontWeight: FontWeight.w600, color: Colors.white),
                           );
                         },
                       ),
-                      const SizedBox(height: AppDimension.paddingXXL),
-                      const DotComp(),
-                      const SizedBox(height: AppDimension.paddingXXL),
-                      CustomButton(
-                        onTap: () => _cubit.nextStep(),
-                        title: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: AppDimension.padding, horizontal: AppDimension.maxPadding),
-                          child: BlocBuilder<GettingStartedCubit, int>(
-                            builder: (context, state) {
-                              return Text(
-                                state == _cubit.totalStep ? GettingStartedConstants.btnEnd : GettingStartedConstants.btnNext,
-                                style: const TextStyle(fontSize: AppTypography.largeFs, fontWeight: FontWeight.w600, color: Colors.white),
-                              );
-                            },
-                          ),
-                        ),
-                        fontSize: AppTypography.largeFs,
-                      )
-                    ],
-                  ),
+                      fontSize: AppTypography.largeFs,
+                    ),
+                    const SizedBox(height: AppDimension.paddingXXL),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

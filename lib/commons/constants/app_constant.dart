@@ -12,6 +12,9 @@ abstract class AppConstants {
   static const int page = 0;
   static const int limit = 10;
   static const String translatePath = 'assets/translations';
-  static const String apiPlaceholder = "https://jsonplaceholder.typicode.com/";
   static const String defaultBox = "config";
+
+  // API 3rd
+  static const String placeholderApi = "https://jsonplaceholder.typicode.com/";
+  static const String mockApi = "https://jsonplaceholder.typicode.com/";
 }

@@ -5,9 +5,9 @@ import 'package:yh_basic/yh_basic.dart';
 import '../../../core/network/dio_client_factory.dart';
 
 @lazySingleton
-class LocationClientService {
+class MockClientService {
   late DioHelper client;
-  LocationClientService() {
+  MockClientService() {
     client = DioClientFactory().createClient(AppConstants.mockApi);
   }
 }

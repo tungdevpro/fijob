@@ -15,7 +15,7 @@ import 'package:yh_basic/local_storage/hive/hive_client_primitive_factory.dart'
 
 import '../core/network/dio_client_factory.dart' as _i9;
 import '../data/data_source/remote/api_client_service.dart' as _i3;
-import '../data/data_source/remote/location_client_service.dart' as _i14;
+import '../data/data_source/remote/location_client_service.dart' as _i15;
 import '../data/data_source/remote/placeholder_client_service.dart' as _i16;
 import '../data/repository_impls/auth_repository_impl.dart' as _i6;
 import '../data/repository_impls/home_repository_impl.dart' as _i13;
@@ -27,7 +27,7 @@ import '../domain/usecases/check_getting_started_usecase.dart' as _i7;
 import '../domain/usecases/home_get_new_job_usecase.dart' as _i22;
 import '../domain/usecases/save_skip_getting_started_usecase.dart' as _i18;
 import '../presentation/auth/bloc/auth_bloc.dart' as _i4;
-import '../presentation/auth/login/bloc/login_bloc.dart' as _i15;
+import '../presentation/auth/login/bloc/login_bloc.dart' as _i14;
 import '../presentation/auth/register/bloc/register_bloc.dart' as _i17;
 import '../presentation/getting_started/bloc/getting_started_cubit.dart'
     as _i10;
@@ -56,9 +56,8 @@ _i1.GetIt initGetIt(
   gh.factory<_i11.HomeBloc>(() => _i11.HomeBloc());
   gh.lazySingleton<_i12.HomeRepository>(
       () => _i13.HomeRepositoryImpl(gh<_i3.ApiClientService>()));
-  gh.lazySingleton<_i14.LocationClientService>(
-      () => _i14.LocationClientService());
-  gh.factory<_i15.LoginBloc>(() => _i15.LoginBloc());
+  gh.factory<_i14.LoginBloc>(() => _i14.LoginBloc());
+  gh.lazySingleton<_i15.MockClientService>(() => _i15.MockClientService());
   gh.lazySingleton<_i16.PlaceholderClientService>(
       () => _i16.PlaceholderClientService());
   gh.factory<_i17.RegisterBloc>(() => _i17.RegisterBloc());

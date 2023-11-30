@@ -34,7 +34,7 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
         backgroundColor: ColorConstants.primary,
         body: SafeArea(
           child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: AppDimension.paddingXXL),
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingXXL),
             physics: const ClampingScrollPhysics(),
             children: [
               BlocBuilder<GettingStartedCubit, int>(
@@ -51,8 +51,8 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
               ),
               Container(
                 width: double.infinity,
-                padding: const EdgeInsets.all(AppDimension.paddingXXL),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(AppDimension.radiusLG)),
+                padding: const EdgeInsets.all(Dimensions.paddingXXL),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(Dimensions.radiusLG)),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,9 +95,9 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
                         );
                       },
                     ),
-                    const SizedBox(height: AppDimension.paddingXXL),
+                    const SizedBox(height: Dimensions.paddingXXL),
                     const DotComp(),
-                    const SizedBox(height: AppDimension.paddingXXL),
+                    const SizedBox(height: Dimensions.paddingXXL),
                     CustomButton(
                       onTap: () => _cubit.nextStep(),
                       title: BlocBuilder<GettingStartedCubit, int>(
@@ -110,7 +110,7 @@ class _GettingStartedPageState extends State<GettingStartedPage> {
                       ),
                       fontSize: AppTypography.largeFs,
                     ),
-                    const SizedBox(height: AppDimension.paddingXXL),
+                    const SizedBox(height: Dimensions.paddingXXL),
                   ],
                 ),
               ),

@@ -39,17 +39,17 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
         appBar: AppHeader(),
         bottomNavigationBar: const AuthTermsConditionBottom(),
         body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: AppDimension.paddingXXL),
+          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingXXL),
           physics: const ClampingScrollPhysics(),
           children: [
-            const SizedBox(height: AppDimension.paddingXXL),
+            const SizedBox(height: Dimensions.paddingXXL),
             BlocSelector<RegisterBloc, RegisterState, bool>(
               selector: (state) => state.isNextComplete,
               builder: (context, isNextComplete) {
                 return _buildLabel(isNextComplete ? AuthConstant.nextStepCompleteLabel : AuthConstant.registerLabel);
               },
             ),
-            const SizedBox(height: AppDimension.paddingXXL),
+            const SizedBox(height: Dimensions.paddingXXL),
             BlocSelector<RegisterBloc, RegisterState, bool>(
               selector: (state) => state.isNextComplete,
               builder: (context, isNextComplete) {
@@ -57,23 +57,24 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                     ? Column(
                         children: [
                           const ContinueWidth3rdParty(),
-                          const SizedBox(height: AppDimension.paddingXXL),
+                          const SizedBox(height: Dimensions.paddingXXL),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: AppDimension.maxPadding),
+                            padding: const EdgeInsets.symmetric(horizontal: Dimensions.maxPadding),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(child: Container(height: 1, color: const Color(0xffE3E7EC))),
-                                const SizedBox(width: AppDimension.padding),
-                                const Text(AuthConstant.continueWith, style: TextStyle(fontWeight: FontWeight.w600, color: ColorConstants.gray60)),
-                                const SizedBox(width: AppDimension.padding),
+                                const SizedBox(width: Dimensions.padding),
+                                const Text(AuthConstant.continueWith,
+                                    style: TextStyle(fontWeight: FontWeight.w600, color: ColorConstants.gray60)),
+                                const SizedBox(width: Dimensions.padding),
                                 Expanded(child: Container(height: 1, color: const Color(0xffE3E7EC))),
                               ],
                             ),
                           ),
-                          const SizedBox(height: AppDimension.paddingXXL),
+                          const SizedBox(height: Dimensions.paddingXXL),
                           BlocBuilder<RegisterBloc, RegisterState>(
                             buildWhen: (previous, current) => previous.email != current.email,
                             builder: (context, state) => CustomInputField(
@@ -100,7 +101,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                               controller: bloc.fullNameController,
                             ),
                           ),
-                          const SizedBox(height: AppDimension.paddingXXL),
+                          const SizedBox(height: Dimensions.paddingXXL),
                           BlocBuilder<RegisterBloc, RegisterState>(
                             buildWhen: (previous, current) => previous.password != current.password,
                             builder: (context, state) => CustomInputField(
@@ -116,7 +117,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                       );
               },
             ),
-            const SizedBox(height: AppDimension.maxPadding),
+            const SizedBox(height: Dimensions.maxPadding),
             BlocSelector<RegisterBloc, RegisterState, bool>(
               selector: (state) => state.isNextComplete,
               builder: (context, isNextComplete) {
@@ -126,14 +127,15 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                       bloc.add(RegisterNextStepCompleteEvent(true));
                       return;
                     }
-                    bloc.add(RegisterSubmittedEvent(email: bloc.emailController.text, fullName: bloc.fullNameController.text, password: bloc.passwordController.text));
+                    bloc.add(RegisterSubmittedEvent(
+                        email: bloc.emailController.text, fullName: bloc.fullNameController.text, password: bloc.passwordController.text));
                   },
                   fontSize: AppTypography.largeFs,
                   title: AuthConstant.btnWidthEmail,
                 );
               },
             ),
-            const SizedBox(height: AppDimension.paddingXXL),
+            const SizedBox(height: Dimensions.paddingXXL),
             Center(
               child: RichText(
                 text: TextSpan(
@@ -154,7 +156,8 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
     );
   }
 
-  Widget _buildLabel(String text) => Center(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: AppTypography.maxLargeFs)));
+  Widget _buildLabel(String text) =>
+      Center(child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: AppTypography.maxLargeFs)));
 
   void _onGoToLogin() => bloc.navigator.pushNamed(RoutePath.home);
 }

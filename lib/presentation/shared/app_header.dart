@@ -93,8 +93,9 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
           : IconButton(
               onPressed: onLeadingPressed ?? () => _onPop(context),
               icon: Container(
-                padding: const EdgeInsets.only(left: AppDimension.padding),
-                child: SvgPicture.asset(leadingIcon == LeadingIcon.close ? IconResource.icX : IconResource.icArrowLeft, fit: BoxFit.scaleDown),
+                padding: const EdgeInsets.only(left: Dimensions.padding),
+                child:
+                    SvgPicture.asset(leadingIcon == LeadingIcon.close ? IconResource.icX : IconResource.icArrowLeft, fit: BoxFit.scaleDown),
               ),
             ),
       centerTitle: centerTitle,

@@ -11,17 +11,21 @@ class CustomInputField extends StatelessWidget {
   final dynamic labelText;
   final TextEditingController? controller;
 
-  const CustomInputField({super.key, this.prefixIcon, this.hintText, this.suffixIcon, this.onChanged, this.errorText, this.labelText, this.controller});
+  const CustomInputField(
+      {super.key, this.prefixIcon, this.hintText, this.suffixIcon, this.onChanged, this.errorText, this.labelText, this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(labelText != null) labelText is Widget ? labelText : Padding(
-          padding: const EdgeInsets.only(bottom: 8),
-          child: Text(labelText, style: const TextStyle(fontWeight: FontWeight.w500, color: ColorConstants.gray100)),
-        ),
+        if (labelText != null)
+          labelText is Widget
+              ? labelText
+              : Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(labelText, style: const TextStyle(fontWeight: FontWeight.w500, color: ColorConstants.gray100)),
+                ),
         TextFormField(
           controller: controller,
           cursorColor: ColorConstants.gray70,
@@ -34,11 +38,14 @@ class CustomInputField extends StatelessWidget {
             prefixIcon: Padding(padding: const EdgeInsets.all(13), child: prefixIcon),
             errorText: errorText,
             border: OutlineInputBorder(
-                borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimension.radius)),
+                borderSide: const BorderSide(width: .5, color: ColorConstants.line),
+                borderRadius: BorderRadius.circular(Dimensions.radius)),
             enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimension.radius)),
+                borderSide: const BorderSide(width: .5, color: ColorConstants.line),
+                borderRadius: BorderRadius.circular(Dimensions.radius)),
             focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(width: .5, color: ColorConstants.line), borderRadius: BorderRadius.circular(AppDimension.radius)),
+                borderSide: const BorderSide(width: .5, color: ColorConstants.line),
+                borderRadius: BorderRadius.circular(Dimensions.radius)),
           ),
         ),
       ],

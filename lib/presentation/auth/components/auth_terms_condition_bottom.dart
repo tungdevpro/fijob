@@ -14,7 +14,7 @@ class AuthTermsConditionBottom extends StatelessWidget {
     return Container(
       height: 75,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: AppDimension.maxPadding + 18).copyWith(top: 10),
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.maxPadding + 18).copyWith(top: 10),
       // alignment: Alignment.center,
       child: RichText(
         textAlign: TextAlign.center,
@@ -22,9 +22,15 @@ class AuthTermsConditionBottom extends StatelessWidget {
           style: const TextStyle(color: ColorConstants.gray60, fontWeight: FontWeight.w600, fontSize: AppTypography.mediumFs),
           children: <TextSpan>[
             TextSpan(text: '${AuthConstant.termsCondition[0]} '),
-            TextSpan(text: AuthConstant.termsCondition[1], style: const TextStyle(color: ColorConstants.primary), recognizer: TapGestureRecognizer()..onTap = () => _onTapTerm()),
+            TextSpan(
+                text: AuthConstant.termsCondition[1],
+                style: const TextStyle(color: ColorConstants.primary),
+                recognizer: TapGestureRecognizer()..onTap = () => _onTapTerm()),
             TextSpan(text: ' ${AuthConstant.termsCondition[2]} '),
-            TextSpan(text: AuthConstant.termsCondition[3], style: const TextStyle(color: ColorConstants.primary), recognizer: TapGestureRecognizer()..onTap = () => _onTapCondition()),
+            TextSpan(
+                text: AuthConstant.termsCondition[3],
+                style: const TextStyle(color: ColorConstants.primary),
+                recognizer: TapGestureRecognizer()..onTap = () => _onTapCondition()),
           ],
         ),
       ),

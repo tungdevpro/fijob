@@ -22,8 +22,9 @@ class DotComp extends StatelessWidget {
               width: cur == index ? 32 : 12,
               height: 12,
               margin: const EdgeInsets.only(right: 10),
-              decoration:
-                  BoxDecoration(color: cur == index ? ColorConstants.primary : ColorConstants.primary.withOpacity(.16), borderRadius: BorderRadius.circular(AppDimension.radius)),
+              decoration: BoxDecoration(
+                  color: cur == index ? ColorConstants.primary : ColorConstants.primary.withOpacity(.16),
+                  borderRadius: BorderRadius.circular(Dimensions.radius)),
             ),
           ).toList(),
         );

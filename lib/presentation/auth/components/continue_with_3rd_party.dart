@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ContinueWidth3rdParty extends StatelessWidget {
-  const   ContinueWidth3rdParty({super.key});
+  const ContinueWidth3rdParty({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ContinueWidth3rdParty extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               SvgPicture.asset(IconResource.icGoogleSymbol1, width: 22),
-              const SizedBox(width: AppDimension.padding),
+              const SizedBox(width: Dimensions.padding),
               const Text(
                 AuthConstant.googleLabel,
                 style: TextStyle(fontSize: AppTypography.largeFs, fontWeight: FontWeight.w600, color: ColorConstants.gray100),
@@ -32,7 +32,7 @@ class ContinueWidth3rdParty extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: AppDimension.padding),
+        const SizedBox(height: Dimensions.padding),
         CustomButton.secondary(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +40,7 @@ class ContinueWidth3rdParty extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               SvgPicture.asset(IconResource.icIconApple, width: 22),
-              const SizedBox(width: AppDimension.padding),
+              const SizedBox(width: Dimensions.padding),
               const Text(
                 AuthConstant.appleLabel,
                 style: TextStyle(fontSize: AppTypography.largeFs, fontWeight: FontWeight.w600, color: ColorConstants.gray100),

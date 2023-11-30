@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 @immutable
-abstract class AppDimension {
-  const AppDimension._();
+abstract class Dimensions {
+  const Dimensions._();
 
   static const double paddingSM = 10.0;
   static const double padding = 12.0;

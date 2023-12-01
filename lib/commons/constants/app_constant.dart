@@ -16,5 +16,5 @@ abstract class AppConstants {
 
   // API 3rd
   static const String placeholderApi = "https://jsonplaceholder.typicode.com/";
-  static const String mockApi = "https://jsonplaceholder.typicode.com/";
+  static const String mockApi = "https://6565fc96eb8bb4b70ef2bc0b.mockapi.io/api/v1/";
 }

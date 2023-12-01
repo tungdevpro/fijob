@@ -17,6 +17,7 @@ abstract class BaseStateView<P extends StatefulWidget, T extends BaseBloc<BaseEv
     _bloc = initBloc;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      _bloc?.navigator.setContext(context);
       _bloc?.initialRouteSetting(ModalRoute.of(context)?.settings);
     });
   }

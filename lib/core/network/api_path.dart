@@ -6,3 +6,9 @@ abstract class ApiPath {
 
   static const String listPost = '/posts';
 }
+
+abstract class MockPath {
+  const MockPath._();
+
+  static const String listCountry = '/countries';
+}

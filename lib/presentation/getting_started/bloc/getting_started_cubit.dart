@@ -3,7 +3,6 @@ import 'package:fijob/core/storage/local_key.dart';
 import 'package:fijob/data/repository_impls/splash_repository_impl.dart';
 import 'package:fijob/di/di.dart';
 import 'package:fijob/domain/enities/getting_started_entity.dart';
-import 'package:fijob/domain/repositories/splash_repository.dart';
 import 'package:fijob/presentation/getting_started/getting_started_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

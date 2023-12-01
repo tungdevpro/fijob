@@ -8,29 +8,46 @@ class CustomInputField extends StatelessWidget {
   final String? hintText;
   final ValueChanged<String>? onChanged;
   final String? errorText;
-  final dynamic labelText;
+  final dynamic label;
   final TextEditingController? controller;
+  final bool readOnly;
+  final bool enabled;
+  final VoidCallback? onTap;
 
-  const CustomInputField(
-      {super.key, this.prefixIcon, this.hintText, this.suffixIcon, this.onChanged, this.errorText, this.labelText, this.controller});
+  const CustomInputField({
+    super.key,
+    this.prefixIcon,
+    this.hintText,
+    this.suffixIcon,
+    this.onChanged,
+    this.errorText,
+    this.label,
+    this.controller,
+    this.readOnly = false,
+    this.enabled = true,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (labelText != null)
-          labelText is Widget
-              ? labelText
+        if (label != null)
+          label is Widget
+              ? label
               : Padding(
                   padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(labelText, style: const TextStyle(fontWeight: FontWeight.w500, color: ColorConstants.gray100)),
+                  child: Text(label, style: const TextStyle(fontWeight: FontWeight.w500, color: ColorConstants.gray100)),
                 ),
         TextFormField(
           controller: controller,
           cursorColor: ColorConstants.gray70,
           cursorWidth: 1,
           onChanged: (value) => onChanged?.call(value),
+          onTap: onTap,
+          readOnly: readOnly,
+          enabled: enabled,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: const TextStyle(color: ColorConstants.gray70, fontSize: 16),

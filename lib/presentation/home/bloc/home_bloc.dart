@@ -17,9 +17,8 @@ import '../../../domain/enities/post_entity.dart';
 class HomeBloc extends BaseBloc<HomeEvent, ViewState<List<Post>>> implements LibraryInitializer {
   HomeBloc() : super(ViewState<List<Post>>(data: null));
 
-  static HomeBloc get to => getIt<HomeBloc>()
-    ..init()
-    ..add(HomeGetPostEvent());
+  static HomeBloc get to => getIt<HomeBloc>()..init();
+  // ..add(HomeGetPostEvent());
 
   final homeRepo = getIt<HomeRepository>();
   late BaseRefreshController refreshController;
@@ -29,9 +28,7 @@ class HomeBloc extends BaseBloc<HomeEvent, ViewState<List<Post>>> implements Lib
     refreshController = BaseRefreshController(RefreshController(initialRefresh: false), handler: onHandler);
   }
 
-  void onHandler() {
-    print('222------->> ');
-  }
+  void onHandler() {}
 
   @override
   void listEvent() {

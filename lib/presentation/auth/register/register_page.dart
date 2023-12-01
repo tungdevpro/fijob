@@ -80,7 +80,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                             builder: (context, state) => CustomInputField(
                               onChanged: (email) => bloc.add(RegisterEmailChanged(email)),
                               errorText: state.email.displayError,
-                              labelText: AuthConstant.emailField,
+                              label: AuthConstant.emailField,
                               hintText: AuthConstant.emailFieldPlaceholder,
                               prefixIcon: SvgPicture.asset(IconResource.icEmailLight),
                               controller: bloc.emailController,
@@ -95,7 +95,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                             builder: (context, state) => CustomInputField(
                               onChanged: (val) => bloc.add(RegisterFullNameChanged(val)),
                               errorText: state.fullName.displayError?.toValue(),
-                              labelText: AuthConstant.fullNameField,
+                              label: AuthConstant.fullNameField,
                               hintText: AuthConstant.fullNameFieldPlaceholder,
                               prefixIcon: SvgPicture.asset(IconResource.icUser),
                               controller: bloc.fullNameController,
@@ -107,7 +107,7 @@ class _RegisterPageState extends BaseStateView<RegisterPage, RegisterBloc> {
                             builder: (context, state) => CustomInputField(
                               onChanged: (val) => bloc.add(RegisterPasswordChanged(val)),
                               errorText: state.password.displayError,
-                              labelText: AuthConstant.passwordField,
+                              label: AuthConstant.passwordField,
                               hintText: AuthConstant.passwordFieldPlaceholder,
                               prefixIcon: SvgPicture.asset(IconResource.icUser),
                               controller: bloc.passwordController,

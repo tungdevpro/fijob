@@ -23,7 +23,15 @@ class BottomSheetMenu extends StatelessWidget {
           children: <Widget>[
             if (title != null)
               Container(
-                decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 1.0, color: const Color(0xffF1F1F1).withOpacity(0.5)))),
+                padding: const EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      width: 1.0,
+                      color: const Color(0xffF1F1F1).withOpacity(0.5),
+                    ),
+                  ),
+                ),
                 child: Row(
                   children: <Widget>[
                     if (actionLeft != null) actionLeft!,

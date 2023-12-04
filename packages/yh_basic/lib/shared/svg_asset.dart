@@ -6,7 +6,7 @@ class SvgAsset extends StatelessWidget {
   final double? width;
   final double? height;
   final BoxFit fit;
-  const SvgAsset({super.key, required this.assetName, this.width, this.height, this.fit = BoxFit.contain});
+  const SvgAsset(this.assetName, {super.key, this.width, this.height, this.fit = BoxFit.contain});
 
   @override
   Widget build(BuildContext context) {

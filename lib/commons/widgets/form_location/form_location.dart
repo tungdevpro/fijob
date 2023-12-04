@@ -24,8 +24,8 @@ class _FormLocationState extends BaseStateView<FormLocation, FormLocationBloc> {
   Widget buildChild() {
     return CustomInputField(
       onTap: bloc.onDisplay,
-      label: "Province",
-      hintText: "Select a province",
+      label: "Country",
+      hintText: "Select a country",
       readOnly: true,
     );
   }

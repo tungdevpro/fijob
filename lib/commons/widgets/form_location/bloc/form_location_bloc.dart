@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fijob/commons/constants/app_dimens.dart';
 import 'package:fijob/commons/widgets/form_location/bloc/form_location_event.dart';
 import 'package:fijob/commons/widgets/form_location/bloc/form_location_state.dart';
@@ -24,9 +26,12 @@ class FormLocationBloc extends BaseBloc<FormLocationEvent, FormLocationState> im
 
   late BaseRefreshController refreshController;
 
+  var ids = <String>[];
+
   @override
   void listEvent() {
     on<FormLocationFetchingEvent>(_onFormLocationFetching);
+    on<FormLocationSelectedEvent>(_onFormLocationSelectedEvent);
   }
 
   void _onFormLocationFetching(FormLocationFetchingEvent event, Emitter<FormLocationState> emit) async {
@@ -45,10 +50,7 @@ class FormLocationBloc extends BaseBloc<FormLocationEvent, FormLocationState> im
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radius)),
       builder: (context) => BottomSheetMenu(
         title: 'Province',
-        child: BlocProvider.value(
-          value: this,
-          child: const ListLocationComp(),
-        ),
+        child: BlocProvider.value(value: this, child: const ListLocationComp()),
       ),
     );
   }
@@ -56,5 +58,10 @@ class FormLocationBloc extends BaseBloc<FormLocationEvent, FormLocationState> im
   @override
   Future<void> init() async {
     refreshController = BaseRefreshController(RefreshController(initialRefresh: false), handler: () {});
+  }
+
+  void _onFormLocationSelectedEvent(FormLocationSelectedEvent event, Emitter<FormLocationState> emit) {
+    if (event.item == null) return;
+    ids.add(event.item!.id!);
   }
 }

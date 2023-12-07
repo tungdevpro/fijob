@@ -16,7 +16,7 @@ class _LoginPageState extends BaseStateView<LoginPage, LoginBloc> {
   LoginBloc get initBloc => LoginBloc.to;
 
   @override
-  Widget buildChild() {
+  Widget build(BuildContext context) {
     return BlocProvider.value(
       value: bloc,
       child: Scaffold(

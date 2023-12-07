@@ -19,7 +19,7 @@ class _SplashContentState extends BaseStateView<SplashContent, SplashBloc> {
   SplashBloc get initBloc => SplashBloc.to;
 
   @override
-  Widget buildChild() {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.primary,
       body: SafeArea(

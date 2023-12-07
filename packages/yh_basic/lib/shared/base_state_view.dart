@@ -25,17 +25,6 @@ abstract class BaseStateView<P extends StatefulWidget, T extends BaseBloc<BaseEv
   T get initBloc => context.read<T>();
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _unfocus,
-      child: buildChild(),
-    );
-  }
-
-  @mustCallSuper
-  Widget buildChild();
-
-  @override
   void dispose() {
     _bloc?.close();
     super.dispose();

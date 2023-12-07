@@ -20,7 +20,7 @@ class _HomePageState extends BaseStateView<HomePage, HomeBloc> {
   HomeBloc get initBloc => HomeBloc.to;
 
   @override
-  Widget buildChild() {
+  Widget build(BuildContext context) {
     return BlocProvider.value(
       value: bloc,
       child: Scaffold(

@@ -21,7 +21,7 @@ class _FormLocationState extends BaseStateView<FormLocation, FormLocationBloc> {
   FormLocationBloc get initBloc => getIt<FormLocationBloc>()..init();
 
   @override
-  Widget buildChild() {
+  Widget build(BuildContext context) {
     return CustomInputField(
       onTap: bloc.onDisplay,
       label: "Country",
